@@ -8,6 +8,9 @@ module.exports = {
         customBlue: "#EAF8FF",
         customPink: "#FFEEF1",
       },
+      fontFamily: {
+        sans: ["Inika"],
+      },
     },
   },
   plugins: [],
