@@ -22,23 +22,25 @@
       <nav class="flex justify-start flex-1 absolute top-0 mt-36 pl-3">
         <ul class="flex flex-row text-base gap-8">
           <li>
-            <a href="#" class="inline-block" id="active">Profile</a>
+            <a href="#" class="inline-block hover:underline" id="active"
+              >Profile</a
+            >
           </li>
           <li>
-            <a href="#" class="inline-block">Favorites</a>
+            <a href="#" class="inline-block hover:underline">Favorites</a>
           </li>
           <li>
-            <a href="#" class="inline-block">Listings</a>
+            <a href="#" class="inline-block hover:underline">Listings</a>
           </li>
           <li>
-            <a href="#" class="inline-block">My Bid</a>
+            <a href="#" class="inline-block hover:underline">My Bid</a>
           </li>
         </ul>
       </nav>
 
       <div class="flex justify-end flex-1">
         <button
-          class="text-black bg-customBlue w-28 mr-3 rounded p-1 absolute top-1 mt-1 flex justify-center shadow-lg"
+          class="text-black bg-customBlue w-28 mr-3 rounded p-1 absolute top-1 mt-1 flex justify-center shadow-lg hover:underline"
         >
           Log out
           <svg
@@ -80,7 +82,7 @@
     </div>
     <div class="">
       <button
-        class="bg-customBlue w-52 mt-5 rounded p-1 flex justify-center shadow-lg"
+        class="bg-customBlue w-52 mt-5 rounded p-1 flex justify-center shadow-lg hover:underline"
       >
         Create New Listing
         <svg
@@ -104,7 +106,7 @@
         <div class="flex flex-row justify-between mb-5">
           <h5>Name of cup</h5>
           <button
-            class="flex justify-center w-40 bg-customPink rounded shadow-lg"
+            class="flex justify-center w-40 bg-customPink rounded shadow-lg hover:underline"
           >
             Add to favorites
             <svg
@@ -131,10 +133,16 @@
         <p>Time Left:</p>
         <div class="flex justify-between mt-5">
           <div class="flex flex-row gap-2">
-            <button class="w-36 bg-customBlue rounded shadow-lg">BID</button>
+            <button
+              class="w-36 bg-customBlue rounded shadow-lg hover:underline"
+            >
+              BID
+            </button>
             <input type="number" class="rounded w-16 shadow-lg" />
           </div>
-          <button class="w-36 bg-customBlue rounded shadow-lg">Buy Now</button>
+          <button class="w-36 bg-customBlue rounded shadow-lg hover:underline">
+            Buy Now
+          </button>
         </div>
       </div>
     </div>
