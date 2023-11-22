@@ -11,7 +11,10 @@ module.exports = {
         customGreen: "#CAFFF5",
       },
       fontFamily: {
-        sans: ["Inika", "Inder", "Poppins", "Kreon"],
+        kreon: ["Kreon", "serif"],
+        poppins: ["Poppins", "sans-serif"],
+        inika: ["Inika", "sans-serif"],
+        inder: ["Inder", "sans-serif"],
       },
     },
   },
