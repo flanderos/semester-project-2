@@ -11,7 +11,7 @@ module.exports = {
         customGreen: "#CAFFF5",
       },
       fontFamily: {
-        sans: ["Inika"],
+        sans: ["Inika", "Inder", "Poppins", "Kreon"],
       },
     },
   },
