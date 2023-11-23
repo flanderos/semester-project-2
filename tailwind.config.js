@@ -18,5 +18,14 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      const newUtilities = {
+        ".classActive": {
+          textDecoration: "underline",
+        },
+      };
+      addUtilities(newUtilities, ["responsive", "hover"]);
+    }),
+  ],
 };
