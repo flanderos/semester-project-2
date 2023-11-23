@@ -2073,20 +2073,20 @@ video {
   vertical-align: super;
 }
 
-.font-kreon {
-  font-family: Kreon, serif;
+.font-inder {
+  font-family: Inder, sans-serif;
 }
 
-.font-sans {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+.font-kreon {
+  font-family: Kreon, serif;
 }
 
 .font-poppins {
   font-family: Poppins, sans-serif;
 }
 
-.font-inder {
-  font-family: Inder, sans-serif;
+.font-sans {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .text-2xl {
@@ -2517,6 +2517,10 @@ video {
 .content-\[\'this-is-also-valid\]-weirdly-enough\'\] {
   --tw-content: 'this-is-also-valid]-weirdly-enough';
   content: var(--tw-content);
+}
+
+.classActive {
+  text-decoration: underline;
 }
 
 .\[a-zA-Z0-9\:\\\\-\\\\\._\$\] {
