@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="dist/styles.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inder&family=Inika&family=Kreon&family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex items-center justify-center flex-col bg-customGrey">
+    <!-- Header -->
+    <div class="absolute top-0 mt-16">
+      <h1 class="text-5xl font-kreon">Moomin Auction House!</h1>
+    </div>
+    <div
+      class="w-full border h-[170px] border-black flex justify-between items-center bg-white mx-4"
+    >
+      <nav
+        class="flex justify-start flex-1 absolute top-0 mt-36 pl-3 font-poppins"
+      >
+        <ul class="flex flex-row text-base gap-8">
+          <li>
+            <a href="auction.html" class="inline-block hover:underline" id=""
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="inline-block hover:underline classActive"
+              id="active"
+              >Profile</a
+            >
+          </li>
+          <li>
+            <a href="#" class="inline-block hover:underline">My Listings</a>
+          </li>
+          <li>
+            <a href="#" class="inline-block hover:underline">My Bids</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="flex justify-end flex-1">
+        <button
+          class="text-black bg-customBlue w-28 mr-3 rounded p-1 absolute top-1 mt-1 flex justify-center drop-shadow-xl hover:underline font-inder"
+        >
+          Log out
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- CARD -->
+
+    <div
+      class="bg-white w-[600px] mt-10 border border-black rounded flex flex-row h-[580px] shadow-xl p-5"
+    >
+      <div id="profileInfo" class="flex flex-1 flex-col justify-between">
+        <div>
+          <button
+            class="bg-customBlue w-48 flex justify-around h-10 items-center font-inder mb-4 rounded drop-shadow-xl"
+            href="auction.html"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
+              />
+            </svg>
+            Back to Auction
+          </button>
+          <div id="credit">Credits: 1000</div>
+          <div id="username" class="mb-4">Username: Something</div>
+          <div id="avatar">
+            <img
+              class="w-48 rounded mb-4 border border-black"
+              src="assets/DALL·E 2023-11-22 21.07.31 - Refine the caricature of the person to closely resemble the features in the uploaded image. The caricature should capture the unique attributes of the.png"
+            />
+          </div>
+          <button
+            id="changeAvatar"
+            class="bg-customBlue w-36 flex justify-around h-8 items-center font-inder mb-8 drop-shadow-xl"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+              />
+            </svg>
+
+            Change avatar
+          </button>
+          <div id="userEmail">Email: something@hotmail.com</div>
+          <button
+            class="bg-customGreen w-48 flex justify-around h-10 items-center font-inder mt-20 rounded drop-shadow-xl"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5"
+              />
+            </svg>
+
+            List item
+          </button>
+        </div>
+      </div>
+      <div id="userListings">
+        <h4>Listet items</h4>
+        <ul>
+          <li>Item</li>
+          <li>Item</li>
+          <li>Item</li>
+          <li>Item</li>
+          <li>Item</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CARD -->
+  </body>
+</html>

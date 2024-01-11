@@ -1,8 +1,32 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require("tailwindcss/plugin");
 module.exports = {
-  content: ["./index.html"],
+  content: ["*.html", "./**/*.html", "./**/*.js"],
+
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        customGrey: "#F5F5F5",
+        customBlue: "#EAF8FF",
+        customPink: "#FFE4E9",
+        customGreen: "#CAFFF5",
+      },
+      fontFamily: {
+        kreon: ["Kreon", "serif"],
+        poppins: ["Poppins", "sans-serif"],
+        inika: ["Inika", "sans-serif"],
+        inder: ["Inder", "sans-serif"],
+      },
+    },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      const newUtilities = {
+        ".classActive": {
+          textDecoration: "underline",
+        },
+      };
+      addUtilities(newUtilities, ["responsive", "hover"]);
+    }),
+  ],
 };
