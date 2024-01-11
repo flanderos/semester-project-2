@@ -28,15 +28,18 @@
       <form
         class="flex flex-col h-[350px] w-[400px] justify-center items-center"
       >
+      <div class="flex flex-col items-start justify-center">
+        <label>Name:</label
+        ><input type="text" class="border border-black rounded w-72" id="nameInput" />
         <div class="flex flex-col items-start justify-center">
-          <label>Name:</label
-          ><input type="text" class="border border-black rounded w-72" />
           <label>Email:</label
-          ><input type="email" class="border border-black rounded w-72" />
+          ><input type="email" class="border border-black rounded w-72" id="emailInput" />
+          <div id="emailError" class="text-red-600 hidden">invalid email</div>
           <label>Password:</label
-          ><input type="password" class="border border-black rounded w-72" />
+          ><input type="password" class="border border-black rounded w-72" id="passwordInput" />
+          <div id="passwordError" class="text-red-600 hidden">invalid password</div>
           <label>avatar</label
-          ><input type="text" class="border border-black rounded w-72" />
+          ><input type="text" class="border border-black rounded w-72" id="avatarInput" />
           <div class="mt-5 flex flex-row justify-between w-full">
             <button class="bg-customBlue rounded p-1 w-32 shadow-lg" id="loginButton">
               Log in
