@@ -38,3 +38,5 @@ document.getElementById('registerButton').addEventListener('click', function(eve
     event.preventDefault(); 
     registerUser(); 
 });
+
+//added comment for first push
