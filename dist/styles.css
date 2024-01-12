@@ -609,8 +609,8 @@ video {
   margin-top: 1.25rem;
 }
 
-.block {
-  display: block;
+.mt-8 {
+  margin-top: 2rem;
 }
 
 .inline-block {
@@ -695,6 +695,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.max-w-\[90\%\] {
+  max-width: 90%;
 }
 
 .flex-1 {
@@ -829,11 +833,6 @@ video {
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
-}
-
-.text-customBlue {
-  --tw-text-opacity: 1;
-  color: rgb(234 248 255 / var(--tw-text-opacity));
 }
 
 .text-red-600 {
