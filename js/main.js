@@ -1,1 +1,1 @@
-import { registerUser } from "./auth/login.js";
+import { registerUser } from "./auth/register.js";
