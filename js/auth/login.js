@@ -1,4 +1,4 @@
-function registerUser() {
+export function registerUser() {
     const nameInput = document.getElementById('nameInput'); 
     const emailInput = document.getElementById('emailInput');
     const passwordInput = document.getElementById('passwordInput');
