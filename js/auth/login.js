@@ -1,42 +1,32 @@
-export function registerUser() {
-    const nameInput = document.getElementById('nameInput'); 
-    const emailInput = document.getElementById('emailInput');
-    const passwordInput = document.getElementById('passwordInput');
-    const avatarInput = document.getElementById('avatarInput');
-
-    const userData = {
-        name: nameInput.value,
-        email: emailInput.value,
-        password: passwordInput.value,
-        avatar: avatarInput.value 
-    };
-
-    fetch('https://api.noroff.dev/api/v1/auction/auth/register', {
+export function loginUser(email, password) {
+    fetch('https://api.noroff.dev/api/v1/auction/auth/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(userData)
+        body: JSON.stringify({ email, password })
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('Login failed');
         }
         return response.json();
     })
     .then(data => {
-        console.log('Registration successful', data);
-        // Add redirect to auction page here
+        const token = data.accessToken; 
+        localStorage.setItem('token', token);
+        console.log('Login successful');
+        window.location.href = 'auction.html'; 
+        console.log(data)
     })
     .catch(error => {
-        console.error('Error during registration:', error);
-        //Add error message here
+        console.error('Error:', error);
     });
 }
 
-document.getElementById('registerButton').addEventListener('click', function(event) {
+document.getElementById('loginButton').addEventListener('click', function(event) {
     event.preventDefault(); 
-    registerUser(); 
+    const emailInput = document.getElementById('emailInput');
+    const passwordInput = document.getElementById('passwordInput');
+    loginUser(emailInput.value, passwordInput.value); 
 });
-
-//added comment for first push
