@@ -26,7 +26,7 @@ export function registerUser() {
     })
     .then(data => {
         console.log('Registration successful', data);
-        // Add redirect to auction page here
+        window.location.href = "login.html";
     })
     .catch(error => {
         console.error('Error during registration:', error);
