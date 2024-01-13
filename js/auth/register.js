@@ -26,7 +26,7 @@ export function registerUser() {
     })
     .then(data => {
         console.log('Registration successful', data);
-        // Add redirect to auction page here
+        window.location.href = "login.html";
     })
     .catch(error => {
         console.error('Error during registration:', error);
@@ -34,9 +34,12 @@ export function registerUser() {
     });
 }
 
-document.getElementById('registerButton').addEventListener('click', function(event) {
+
+
+ document.getElementById('registerButton').addEventListener('click', function(event) {
     event.preventDefault(); 
-    registerUser(); 
+    registerUser();
+ 
 });
 
 //added comment for first push
