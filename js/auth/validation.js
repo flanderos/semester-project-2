@@ -56,21 +56,7 @@ export function validateForm(event) {
       }
     }
   }
-  
-/*       if (
-        nameInput.value.trim().length < 2 &&
-        validateEmail(emailInput.value) === true &&
-        passwordInput.value.trim().length > 6 &&
-        isNoroffEmail(emailInput.value)
-      ) {
-        registerUser();
-      } else {
-        console.log(
-          "Validering mislyktes. Vennligst fyll ut alle feltene riktig."
-        );
-      }
-    }
-  } */
+
   
   validateForm();
   

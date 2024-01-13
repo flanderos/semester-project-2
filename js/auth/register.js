@@ -34,9 +34,12 @@ export function registerUser() {
     });
 }
 
-document.getElementById('registerButton').addEventListener('click', function(event) {
+
+
+ document.getElementById('registerButton').addEventListener('click', function(event) {
     event.preventDefault(); 
-    registerUser(); 
+    registerUser();
+ 
 });
 
 //added comment for first push
