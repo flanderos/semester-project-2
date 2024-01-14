@@ -17,13 +17,13 @@ export const renderListings = async () => {
         const media = results[i].media[0] ? results[i].media[0] : "../../assets/placeholder.png";
         
         listings.innerHTML += `
-        <div class="max-w-[325px] border border-black rounded p-5 mt-5 bg-white shadow-lg">
+        <div class="h-96 w-96 border border-black rounded p-5 mt-5 bg-white shadow-lg flex flex-col justify-between">
             <div class="flex flex-row justify-between mb-5">
                 <p class="text-xl" id="title">${title}</p>
                 <p class="text-xl" id="timeCreated">Created:${created}</p>
             </div>
             <p class="text-lg" id="tags">${tags}</p>
-            <img src="${media}"onerror="this.onerror=null; this.src='../../assets/placeholder.png';" alt="placeholder image" />
+            <img class="h-72 w-72" src="${media}"onerror="this.onerror=null; this.src='../../assets/placeholder.png';" alt="placeholder image" />
             <p class="mt-5">Current Bid:</p>
             <p>Time Left:</p>
             <div class="flex justify-between mt-5">
