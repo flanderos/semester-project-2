@@ -1,2 +1,3 @@
 import { logOut } from "./scripts/logout.mjs";
-import { getListings } from "./api/api.js";
+import { renderListings } from "./listings/card.mjs";
+
