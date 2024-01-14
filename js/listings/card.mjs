@@ -12,18 +12,18 @@ export const renderListings = async () => {
     for (let i = 0; i < results.length; i++) {
 
         const title = results[i].title;
+        const created = results[i].created;
+        const tags = results[i].tags;
+        const media = results[i].media[0] ? results[i].media[0] : "../../assets/placeholder.png";
         
 listings.innerHTML += `
 <div class="border border-black rounded p-5 mt-5 bg-white shadow-lg">
   <div class="flex flex-row justify-between mb-5">
     <p class="text-xl" id="title">${title}</p>
-    <p class="text-xl" id="timeCreated">Created:</p>
+    <p class="text-xl" id="timeCreated">Created:${created}</p>
   </div>
-  <p class="text-lg" id="tags">tags:</p>
-  <img
-    src="assets/1c86505f-f427-4ac2-86f5-a5c6211af0abs_600_600.jpg"
-    class="border border-black rounded"
-  />
+  <p class="text-lg" id="tags">${tags}</p>
+  <img src="${media}}"  onerror="this.onerror=null; this.src='../../assets/placeholder.png';"Alt ="placeholder image" />
   <p class="mt-5">Current Bid:</p>
   <p>Time Left:</p>
   <div class="flex justify-between mt-5">
