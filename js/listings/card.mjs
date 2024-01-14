@@ -16,33 +16,24 @@ export const renderListings = async () => {
         const tags = results[i].tags;
         const media = results[i].media[0] ? results[i].media[0] : "../../assets/placeholder.png";
         
-listings.innerHTML += `
-<div class="border border-black rounded p-5 mt-5 bg-white shadow-lg">
-  <div class="flex flex-row justify-between mb-5">
-    <p class="text-xl" id="title">${title}</p>
-    <p class="text-xl" id="timeCreated">Created:${created}</p>
-  </div>
-  <p class="text-lg" id="tags">${tags}</p>
-  <img src="${media}}"  onerror="this.onerror=null; this.src='../../assets/placeholder.png';"Alt ="placeholder image" />
-  <p class="mt-5">Current Bid:</p>
-  <p>Time Left:</p>
-  <div class="flex justify-between mt-5">
-    <div class="flex flex-row gap-2">
-      <button
-        class="w-36 bg-customBlue rounded shadow-lg hover:underline font-inder"
-      >
-        BID
-      </button>
-      <input type="number" class="rounded w-28 shadow-lg border" />
-    </div>
-    <button
-      class="w-36 bg-customBlue rounded shadow-lg hover:underline font-inder"
-    >
-      Buy Now
-    </button>
-  </div>
-</div>
-`;
+        listings.innerHTML += `
+        <div class="max-w-[325px] border border-black rounded p-5 mt-5 bg-white shadow-lg">
+            <div class="flex flex-row justify-between mb-5">
+                <p class="text-xl" id="title">${title}</p>
+                <p class="text-xl" id="timeCreated">Created:${created}</p>
+            </div>
+            <p class="text-lg" id="tags">${tags}</p>
+            <img src="${media}"onerror="this.onerror=null; this.src='../../assets/placeholder.png';" alt="placeholder image" />
+            <p class="mt-5">Current Bid:</p>
+            <p>Time Left:</p>
+            <div class="flex justify-between mt-5">
+                <div class="flex flex-row gap-2">
+                    <button class="w-36 bg-customBlue rounded shadow-lg hover:underline font-inder">BID</button>
+                    <input type="number" class="rounded w-28 shadow-lg border" />
+                </div>
+                <button class="w-36 bg-customBlue rounded shadow-lg hover:underline font-inder">Buy Now</button>
+            </div>
+        </div>`;
 }
 }
 renderListings()
