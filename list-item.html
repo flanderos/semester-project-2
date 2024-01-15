@@ -21,59 +21,62 @@
       <nav class="flex justify-start flex-1 absolute top-0 mt-36 pl-3">
         <ul class="flex flex-row text-base gap-8">
           <li>
-            <a href="#" class="inline-block" id="active">Profile</a>
+            <a href="auction.html" class="inline-block" id="active">Listings</a>
           </li>
           <li>
             <a href="#" class="inline-block">Favorites</a>
           </li>
           <li>
-            <a href="#" class="inline-block">Listings</a>
+            <a href="#" class="inline-block">Profile</a>
           </li>
           <li>
-            <a href="#" class="inline-block">My Bid</a>
+            <a href="#" class="inline-block">My Bids</a>
           </li>
         </ul>
       </nav>
 
       <div class="flex justify-end flex-1">
-        <button
-        class= "bg-customBlue rounded p-1 w-48 shadow-lg flex flex-row justify-between" id="logOutButton"
-      >
-        Log out
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6"
+                <button
+          class= "bg-customBlue rounded p-1 w-48 shadow-lg flex flex-row justify-between" id="logOutButton"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      </button>
+          Log out
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </button>
       </div>
     </div>
-    <h2 class="text-2xl mt-16">"Uncover Moomin Magic, One Bid at a Time!"</h2>
+    <h2 class="text-2xl mt-16">"List your item under and submit!"</h2>
     <div
-      class="bg-white border items-center border-black justify-center mt-14 shadow-2xl"
+      class="bg-white border items-center border-black justify-center mt-14 shadow-2xl rounded"
     >
       <form
-        class="flex flex-col h-[350px] w-[400px] justify-center items-center rounded"
+        class="flex flex-col h-[450px] w-[400px] justify-center items-center rounded"
       >
         <div class="flex flex-col items-start justify-center">
-          <label>Name of cup:</label
-          ><input type="text" class="border border-black rounded w-72" />
-          <label>Start price</label
-          ><input type="email" class="border border-black rounded w-72" />
-          <label>Buy now price</label
-          ><input type="password" class="border border-black rounded w-72" />
+          <label>Title:</label
+          ><input type="text" class="border border-black rounded w-72" id="title" />
+          <label>Price</label
+          ><input type="email" class="border border-black rounded w-72" id="price"/>
+          <label>Tags</label
+          ><input type="password" class="border border-black rounded w-72" id="tags" />
           <label>Image</label
-          ><input type="text" class="border border-black rounded w-72" />
-
+          ><input type="text" class="border border-black rounded w-72" id="image" />
+          <label>Description</label>
+          <input type="text" class="border border-black rounded w-72" id="description" />
+          <label>End</label>
+          <input type="date" class="border border-black rounded w-72" id="endsat" />
           <button class="bg-customBlue rounded p-1 shadow-lg mt-5 w-full">
             List Item
           </button>
