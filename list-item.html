@@ -62,21 +62,27 @@
       class="bg-white border items-center border-black justify-center mt-14 shadow-2xl rounded"
     >
       <form
-        class="flex flex-col h-[450px] w-[400px] justify-center items-center rounded"
+        class="flex flex-col h-[600px] w-[400px] justify-center items-center rounded"
       >
         <div class="flex flex-col items-start justify-center">
           <label>Title:</label
           ><input type="text" class="border border-black rounded w-72" id="title" />
+          <div id="titleerror" class="text-red-500 hidden">invalid title</div>
           <label>Price</label
           ><input type="text" class="border border-black rounded w-72" id="price"/>
+          <div id="titleerror" class="text-red-500 hidden">invalid price</div>
           <label>Tags</label
           ><input type="text" class="border border-black rounded w-72" id="tags" />
+          <div id="titleerror" class="text-red-500 hidden">invalid tags</div>
           <label>Image</label
           ><input type="image" class="border border-black rounded w-72" id="image" />
+          <div id="titleerror" class="text-red-500 hidden">invalid image</div>
           <label>Description</label>
           <input type="text" class="border border-black rounded w-72" id="description" />
+          <div id="titleerror" class="text-red-500 hidden">invalid description</div>
           <label>End</label>
           <input type="datetime-local" class="border border-black rounded w-72" id="enddate" />
+          <div id="titleerror" class="text-red-500 hidden">invalid date</div>
           <button class="bg-customBlue rounded p-1 shadow-lg mt-5 w-full" id="submitbutton">
             List Item
           </button>
