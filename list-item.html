@@ -21,23 +21,23 @@
       <nav class="flex justify-start flex-1 absolute top-0 mt-36 pl-3">
         <ul class="flex flex-row text-base gap-8">
           <li>
-            <a href="#" class="inline-block" id="active">Profile</a>
+            <a href="auction.html" class="inline-block" id="active">Listings</a>
           </li>
           <li>
             <a href="#" class="inline-block">Favorites</a>
           </li>
           <li>
-            <a href="#" class="inline-block">Listings</a>
+            <a href="#" class="inline-block">Profile</a>
           </li>
           <li>
-            <a href="#" class="inline-block">My Bid</a>
+            <a href="#" class="inline-block">My Bids</a>
           </li>
         </ul>
       </nav>
 
       <div class="flex justify-end flex-1">
-        <button
-          class="text-black bg-customBlue w-28 mr-3 border border-black rounded p-1 absolute top-1 mt-1 flex justify-center"
+                <button
+          class= "bg-customBlue rounded p-1 w-48 shadow-lg flex flex-row justify-between" id="logOutButton"
         >
           Log out
           <svg
@@ -57,28 +57,38 @@
         </button>
       </div>
     </div>
-    <h2 class="text-2xl mt-16">"Uncover Moomin Magic, One Bid at a Time!"</h2>
+    <h2 class="text-2xl mt-16">"List your item under and submit!"</h2>
     <div
-      class="bg-white border items-center border-black justify-center mt-14 shadow-2xl"
+      class="bg-white border items-center border-black justify-center mt-14 shadow-2xl rounded"
     >
       <form
-        class="flex flex-col h-[350px] w-[400px] justify-center items-center rounded"
+        class="flex flex-col h-[600px] w-[400px] justify-center items-center rounded"
       >
         <div class="flex flex-col items-start justify-center">
-          <label>Name of cup:</label
-          ><input type="text" class="border border-black rounded w-72" />
-          <label>Start price</label
-          ><input type="email" class="border border-black rounded w-72" />
-          <label>Buy now price</label
-          ><input type="password" class="border border-black rounded w-72" />
+          <label>Title:</label
+          ><input type="text" class="border border-black rounded w-72" id="title" />
+          <div id="titleerror" class="text-red-500 hidden">invalid title</div>
+          <label>Price</label
+          ><input type="text" class="border border-black rounded w-72" id="price"/>
+          <div id="priceerror" class="text-red-500 hidden">invalid price</div>
+          <label>Tags</label
+          ><input type="text" class="border border-black rounded w-72" id="tags" />
+          <div id="tagserror" class="text-red-500 hidden">invalid tags</div>
           <label>Image</label
-          ><input type="text" class="border border-black rounded w-72" />
-
-          <button class="bg-customBlue rounded p-1 shadow-lg mt-5 w-full">
+          ><input type="image" class="border border-black rounded w-72" id="image" />
+          <div id="imageerror" class="text-red-500 hidden">invalid image</div>
+          <label>Description</label>
+          <input type="text" class="border border-black rounded w-72" id="description" />
+          <div id="descriptionerror" class="text-red-500 hidden">Max 50 characters</div>
+          <label>End</label>
+          <input type="datetime-local" class="border border-black rounded w-72" id="enddate" />
+          <div id="enddateerror" class="text-red-500 hidden">invalid date</div>
+          <button class="bg-customBlue rounded p-1 shadow-lg mt-5 w-full" id="submitbutton">
             List Item
           </button>
         </div>
       </form>
     </div>
+    <script type="module" src="js/list-item.js"></script>
   </body>
 </html>
