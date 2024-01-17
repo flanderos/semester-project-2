@@ -65,8 +65,10 @@ export function validateForm(event) {
   
       // Validate all criteria before registering
 
+
+
       if (isFormValid) {
-        registerUser();
+        postItem();
       } else {
         console.log("Validering mislyktes. Vennligst fyll ut alle feltene riktig.");
       }
