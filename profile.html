@@ -28,8 +28,8 @@
       >
         <ul class="flex flex-row text-base gap-8">
           <li>
-            <a href="auction.html" class="inline-block hover:underline" id="active"
-              >Home</a
+            <a href="auction.html" class="inline-block hover:underline" id="acticv"
+              >Auction</a
             >
           </li>
           <li>
@@ -51,24 +51,24 @@
 
       <div class="flex justify-end flex-1">
         <button
-          class="text-black bg-customBlue w-28 mr-3 rounded p-1 absolute top-1 mt-1 flex justify-center drop-shadow-xl hover:underline font-inder"
+        class= "bg-customBlue rounded p-1 w-48 shadow-lg flex flex-row justify-between" id="logOutButton"
+      >
+        Log out
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
         >
-          Log out
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-6 h-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-        </button>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      </button>
       </div>
     </div>
 
@@ -164,5 +164,6 @@
     </div>
 
     <!-- CARD -->
+    <script type="module" src="js/profile.mjs"></script>
   </body>
 </html>
