@@ -1,84 +1,43 @@
-const title = document.querySelector("#title");
-const price = document.querySelector("#price")
-const tags = document.querySelector("#tags")
-const image = document.querySelector("#image")
-const description = document.querySelector("#description")
-const endDate = document.querySelector("#enddate");
-const submitButton = document.querySelector("#submitbutton")
-const titleError = document.querySelector("#titleerror");
-const priceError = document.querySelector("#priceerror");
-const tagsError = document.querySelector("#tagserror");
-const imageError = document.querySelector("#imageerror");
-const descriptionError = document.querySelector("#descriptionerror");
-const endDateError = document.querySelector("#enddateerror");
+import { validateForm } from "./validatepost.mjs";
 
-document.addEventListener('DOMContentLoaded', () => {
-    const now = new Date();
-    const minDate = now.toISOString().slice(0, 16);
-    const maxDate = new Date(now.getTime() + 7 * 24 *60 * 60 * 1000).toISOString().slice(0, 16);
-
-const enddateInput = document.getElementById('enddate');
-if (enddateInput) {
-enddateInput.min = minDate;
-enddateInput.max = maxDate;
-}
-});
-
-export function validateForm(event) {
-    if (event) {
-      event.preventDefault();
-      let isFormValid = true;
-
+export async function postItem() {
+    // Hent token fra localStorage eller en annen kilde
+    const token = localStorage.getItem('token');
   
-      // Validate name input
+    if (!token) {
+      console.error('Ingen token funnet, kan ikke poste item');
+      return;
+    }
+
+    const endDate = document.querySelector("#enddate");
   
-      if (title.value.trim().length < 2 || title.value.trim().length > 20) {
-        titleError.classList.remove("hidden");
-        isFormValid = false;
-      } else {
-        titleError.classList.add("hidden");
-      }
-
-      const priceValue = parseFloat(price.value.trim());
-
-      if (isNaN(priceValue) || priceValue < 1 || priceValue > 10000) {
-        priceError.classList.remove("hidden");
-        isFormValid = false;
-      } else {
-        priceError.classList.add("hidden");
-      }
-
-      if (tags.value.trim().length < 2 || tags.value.trim().length > 20) {
-        tagsError.classList.remove("hidden");
-        isFormValid = false;
-      } else {
-        tagsError.classList.add("hidden");
-      }
-
-      if (description.value.trim().length > 30) {
-        descriptionError.classList.remove("hidden");
-        isFormValid = false;
-      } else {
-        descriptionError.classList.add("hidden");
-      }
-      
+    const itemData = {
+      title: title.value,
+      description: description.value,
+      tags: tags.value.split(',').map(tag => tag.trim()), 
+      media: image.value ? [image.value] : [], 
+      endsAt: endDate.value
+    };
   
-      // Validate all criteria before registering
-
-      if (isFormValid) {
-        registerUser();
-      } else {
-        console.log("Validering mislyktes. Vennligst fyll ut alle feltene riktig.");
+    try {
+      const response = await fetch('https://api.noroff.dev/api/v1/auction/listings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}` // Inkluder token i header
+        },
+        body: JSON.stringify(itemData)
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
+  
+      const responseData = await response.json();
+      console.log('Item posted successfully:', responseData);
+      // Suksessfull handling
+    } catch (error) {
+      console.error('Error posting item:', error);
+      // Feilhåndtering
     }
   }
-
-  
-  validateForm();
-  
-  if (submitButton) {
-    submitButton.addEventListener("click", validateForm);
-  }
-
-
-submitButton.addEventListener("click", validateForm);
