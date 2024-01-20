@@ -16,7 +16,11 @@ export const getListingsByProfile = async () => {
         }
 
         const results = await response.json();
-        console.log(results);
+        
+        for (let i = 0; i < results.length; i++) {
+            const listing = results[i];
+            console.log(listing.title); // Du kan gjøre hva du vil med hvert listing-objekt her
+        }
     } catch (error) {
         console.error('Error fetching listings:', error);
     }
