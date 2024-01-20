@@ -542,10 +542,6 @@ video {
   top: 0px;
 }
 
-.top-1 {
-  top: 0.25rem;
-}
-
 .mx-1 {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
@@ -571,10 +567,6 @@ video {
 
 .mb-8 {
   margin-bottom: 2rem;
-}
-
-.mr-3 {
-  margin-right: 0.75rem;
 }
 
 .mt-1 {
@@ -655,10 +647,6 @@ video {
 
 .h-\[600px\] {
   height: 600px;
-}
-
-.w-28 {
-  width: 7rem;
 }
 
 .w-32 {
@@ -848,11 +836,6 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-
-.text-black {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 .text-blue-700 {

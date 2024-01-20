@@ -1,5 +1,7 @@
 import { loginUser } from "./login.js";
 
+
+
 export function validateLoginForm(event) {
     if (event) {
         event.preventDefault();
@@ -9,6 +11,7 @@ export function validateLoginForm(event) {
         const emailError = document.querySelector("#emailError");
         const passwordInput = document.querySelector("#passwordInput");
         const passwordError = document.querySelector("#passwordError");
+        
   
         // Valider e-postformat
         if (!validateEmail(emailInput.value)) {
@@ -41,4 +44,8 @@ function validateEmail(email) {
     return patternMatches && email.endsWith("@stud.noroff.no") || email.endsWith("noroff.no");
   }
 
-document.getElementById("loginButton").addEventListener("click", validateLoginForm);
+  const loginButton = document.getElementById("loginButton");
+
+  if (loginButton) {
+      loginButton.addEventListener("click", validateLoginForm);
+  }

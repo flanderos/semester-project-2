@@ -64,6 +64,8 @@ export function validateForm(event) {
     registerButton.addEventListener("click", validateForm);
   }
 
+  const loginButton = document.querySelector("#loginbutton")
+
   if (loginButton) {
     loginButton.addEventListener("click", validateForm);
   }

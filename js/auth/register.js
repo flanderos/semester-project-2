@@ -26,7 +26,12 @@ export function registerUser() {
     })
     .then(data => {
         console.log('Registration successful', data);
-        window.location.href = "login.html";
+        localStorage.setItem("userId", data.id);
+        localStorage.setItem("userName", data.name);
+        localStorage.setItem("userEmail", data.email);
+        localStorage.setItem("userAvatar", data.avatar);
+        localStorage.setItem("userCredits", data.credits);
+        /* window.location.href = "login.html"; */
     })
     .catch(error => {
         console.error('Error during registration:', error);
