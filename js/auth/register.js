@@ -31,7 +31,7 @@ export function registerUser() {
         localStorage.setItem("userEmail", data.email);
         localStorage.setItem("userAvatar", data.avatar);
         localStorage.setItem("userCredits", data.credits);
-        /* window.location.href = "login.html"; */
+        window.location.href = "login.html";
     })
     .catch(error => {
         console.error('Error during registration:', error);
