@@ -1,3 +1,5 @@
+const loginButton = document.querySelector('#loginButton');
+
 export function loginUser(email, password) {
     fetch('https://api.noroff.dev/api/v1/auction/auth/login', {
         method: 'POST',
@@ -24,9 +26,11 @@ export function loginUser(email, password) {
     });
 }
 
-document.getElementById('loginButton').addEventListener('click', function(event) {
-    event.preventDefault(); 
-    const emailInput = document.getElementById('emailInput');
-    const passwordInput = document.getElementById('passwordInput');
-    loginUser(emailInput.value, passwordInput.value); 
-});
+if (loginButton) {
+    loginButton.addEventListener('click', function(event) {
+        event.preventDefault(); 
+        const emailInput = document.getElementById('emailInput');
+        const passwordInput = document.getElementById('passwordInput');
+        loginUser(emailInput.value, passwordInput.value); 
+    });
+}
