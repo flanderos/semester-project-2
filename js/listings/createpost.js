@@ -1,4 +1,4 @@
-import { validateForm } from "./validatepost.mjs";
+import { validateForm } from "./validatepost.js";
 
 export async function postItem() {
     // Hent token fra localStorage eller en annen kilde
