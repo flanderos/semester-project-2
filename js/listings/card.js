@@ -23,7 +23,7 @@ export const renderListings = async () => {
                 <p class="text-xl" id="timeCreated">Created: ${created}</p>
             </div>
             <div class="flex-grow">
-                <img class="w-full h-full object-cover" src="${media}" onerror="this.onerror=null; this.src='../../assets/placeholder.png';" alt="placeholder image" />
+                <img class="w-60 h-60 object-cover" src="${media}" onerror="this.onerror=null; this.src='../../assets/placeholder.png';" alt="placeholder image" />
             </div>
             <div>
                 <p class="text-lg" id="tags">${tags}</p>
