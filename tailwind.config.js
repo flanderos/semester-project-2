@@ -17,6 +17,9 @@ module.exports = {
         inika: ["Inika", "sans-serif"],
         inder: ["Inder", "sans-serif"],
       },
+      height: {
+        '450': '450px', // Legger til en ny høydeverdi
+      },
     },
   },
   plugins: [
