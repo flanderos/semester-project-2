@@ -1,3 +1,3 @@
-import { getListingsByProfile } from "./scripts/getlistingbyprofile.mjs";
+import { getListingsByProfile } from "./scripts/getlistingbyprofile.js";
 import { logOut } from "./scripts/logout.mjs";
-import { renderProfileCard } from "./profile/localstorageprofiledata.mjs";
+import { renderProfileCard } from "./profile/localstorageprofiledata.js";
