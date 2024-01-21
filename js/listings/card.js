@@ -26,7 +26,7 @@ export const renderListings = async () => {
                 <img class="w-60 h-60 object-cover" src="${media}" onerror="this.onerror=null; this.src='../../assets/placeholder.png';" alt="placeholder image" />
             </div>
             <div>
-                <p class="text-s" id="tags">${tags}</p>
+                <p class="text-s" id="tags">${tags || ""}</p>
                 <p class="mt-1" text-s>Current Bid:</p>
                 <p>Time Left:</p>
             </div>
