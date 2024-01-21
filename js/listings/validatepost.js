@@ -1,4 +1,4 @@
-import { postItem } from "./createpost.mjs";
+import { postItem } from "./createpost.js";
 
 const title = document.querySelector("#title");
 const price = document.querySelector("#price")
