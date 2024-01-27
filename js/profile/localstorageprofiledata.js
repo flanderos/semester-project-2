@@ -1,8 +1,8 @@
 import { getListingsByProfile } from "../scripts/getlistingbyprofile.js";
 
 export const renderProfileCard = async () => {
-    let userName = localStorage.getItem("name"); // Ensure this matches with your localStorage key
-    let token = localStorage.getItem("token"); // Token must be retrieved from localStorage
+    let userName = localStorage.getItem("name");  
+    let token = localStorage.getItem("token");  
 
     try {
         const response = await fetch(`https://api.noroff.dev/api/v1/auction/profiles/${userName}`, {
@@ -24,14 +24,14 @@ export const renderProfileCard = async () => {
         let userAvatar = profileData.avatar;
 
         // Update localStorage with new data
-        localStorage.setItem("userName", userName); // Assuming you want to update this as well
+        localStorage.setItem("userName", userName); 
         localStorage.setItem("userEmail", userEmail);
         localStorage.setItem("userCredits", userCredits);
         localStorage.setItem("userAvatar", userAvatar);
 
         const profileCard = document.querySelector("#profileInfo");
 
-        // Update the innerHTML of the profile card
+        
         profileCard.innerHTML = `
             <div class="bg-white w-[600px] mt-10 border border-black rounded flex flex-row h-[580px] shadow-xl p-5">
                 <div id="profileInfo" class="flex flex-1 flex-col justify-between">
@@ -62,7 +62,7 @@ export const renderProfileCard = async () => {
     // Fetch listings for the profile
     const userListings = await getListingsByProfile();
 
-    // Additional code to populate #listedItems with the fetched listings can be added here
+    
 };
 
 renderProfileCard();
