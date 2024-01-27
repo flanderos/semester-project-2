@@ -1,5 +1,4 @@
 const listings = document.querySelector("#allthelistings");
-const loader = document.querySelector("#loader");
 
 export function getTimeLeft(endsAt) {
     const endDate = new Date(endsAt);
@@ -58,6 +57,7 @@ export const renderPost = (result, i) => {
 };
 
 export const renderListings = async () => {
+    const loader = document.querySelector("#loader");
     loader.classList.remove('hidden');
     const limit = 40;
     const url = `https://api.noroff.dev/api/v1/auction/listings?sort=endsAt&limit=${limit}`;

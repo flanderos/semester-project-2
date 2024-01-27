@@ -16,8 +16,8 @@ export function getSpecificPost() {
             return response.json();
         })
         .then(data => {
-            // Render data
-            const { created, title, media, tags, endsAt } = data; 
+            // render data
+            const { created, title, media, tags, endsAt } = data; // Bruk data fra API-forespørselen
             const mediaUrl = media[0] ? media[0] : "../../assets/placeholder.png";
             const timeLeft = getTimeLeft(endsAt);
             const timeLeftString = formatTimeLeft(timeLeft);
@@ -56,5 +56,5 @@ export function getSpecificPost() {
         });
 }
 
-
+// Kall funksjonen for å hente detaljer om den spesifikke posten
 getSpecificPost();
