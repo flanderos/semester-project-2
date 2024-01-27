@@ -15,9 +15,10 @@
       rel="stylesheet"
     />
   </head>
-  <body class="flex items-center justify-center flex-col bg-customGrey">
+  <body class="flex items-center justify-center flex-col bg-customGrey max-w-[1750px] mx-auto">
+
     <!-- Header -->
-    <div class="absolute top-0 mt-16 w-[100%]">
+    <div class="absolute top-0 mt-16 w-full flex justify-center">
       <h1 class="text-5xl font-kreon">Moomin Auction House!</h1>
     </div>
     <div
@@ -94,19 +95,30 @@
         class="bg-customBlue w-60 mt-5 rounded p-3 flex justify-center items-baseline shadow-lg hover:underline text-xl"><a href="list-item.html">Create New Listing</a>  
       </button>
     </div>
-    <div class="flex flex-row justify-start my-4 w-full ml-10 align-middle">
-      <div class="bg-white w-30 mt-5 rounded p-3 mr-5 flex justify-center items-baseline shadow-lg text-sm">Sort by</div>
-      <button class="bg-green-200 w-30 mt-5 rounded p-3 flex justify-center items-baseline shadow-lg hover:underline text-sm">
-          Start date
-      </button>
-      <button class="bg-green-200 w-30 mt-5 rounded p-3 flex justify-center items-baseline shadow-lg hover:underline text-sm">
-          Bids
-      </button>
-      <button class="bg-green-200 w-30 mt-5 rounded p-3 flex justify-center items-baseline shadow-lg hover:underline text-sm">
-        End date
-    </button>
+    <div class="flex justify-between w-full">
+      <div class="flex flex-row justify-start my-4 w-1/2">
+          <div class="bg-white w-30 mt-5 ml-5 rounded p-3 mr-5 flex justify-center items-baseline shadow-lg text-sm">Sort by</div>
+          <button class="bg-green-200 w-30 mt-5 rounded p-3 flex justify-center items-baseline shadow-lg hover:underline text-sm">
+              Start date
+          </button>
+          <button class="bg-green-200 w-30 mt-5 rounded p-3 flex justify-center items-baseline shadow-lg hover:underline text-sm">
+              Bids
+          </button>
+          <button class="bg-green-200 w-30 mt-5 rounded p-3 flex justify-center items-baseline shadow-lg hover:underline text-sm">
+              End date
+          </button>
+      </div>
+      <div class="w-1/2 flex justify-end items-center">
+
+          <input class="border rounded px-2 py-1">
+          <button class="bg-green-200 w-30 rounded px-2 py-1 mr-3 ml-3 flex justify-center items-center shadow-lg hover:underline text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+          </svg>
+          </button>
+      </div>
   </div>
-    <div class="mb-20 flex flex-row flex-wrap overflow-hidden" id="allthelistings">
+  <div class="mb-20 flex flex-row flex-wrap overflow-hidden" id="allthelistings">
       <!-- Cards -->
   </div>
   
