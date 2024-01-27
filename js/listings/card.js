@@ -1,45 +1,76 @@
 const listings = document.querySelector("#allthelistings");
+const loader = document.querySelector("#loader"); 
+
+function getTimeLeft(endsAt) {
+    const endDate = new Date(endsAt);
+    const now = new Date();
+    return endDate - now;
+}
+
+function formatTimeLeft(timeLeft) {
+    const hours = Math.floor(timeLeft / 3600000);
+    const minutes = Math.floor((timeLeft % 3600000) / 60000);
+    const seconds = Math.floor((timeLeft % 60000) / 1000);
+    return `${hours}:${minutes}:${seconds}`;
+}
+
+
 
 export const renderListings = async () => {
+    loader.classList.remove('hidden'); // Show loader
+    const limit = 8
+    const url = `https://api.noroff.dev/api/v1/auction/listings?sort=endsAt&limit=${limit}`;
+    const response = await fetch(url);
+    const results = await response.json();
 
-    const url = "https://api.noroff.dev/api/v1/auction/listings"
+    // Removes finished posts
+    const activeResults = results.filter(result => {
+        const timeLeft = getTimeLeft(result.endsAt);
+        return timeLeft > 0; // Check if time left is positive
+    }); 
 
-            const response = await fetch(url);
-            const results = await response.json();
+    listings.innerHTML = ''; 
 
-            console.log(results)
+    activeResults.forEach((result, i) => {
+        const { title, created, tags, media, endsAt } = result;
+        const mediaUrl = media[0] ? media[0] : "../../assets/placeholder.png";
+        const timeLeft = getTimeLeft(endsAt);
+        const timeLeftString = formatTimeLeft(timeLeft);
 
-    for (let i = 0; i < results.length; i++) {
-
-        results.sort((a, b) => new Date(b.created) - new Date(a.created));
-
-        const title = results[i].title;
-        const created = results[i].created;
-        const tags = results[i].tags;
-        const media = results[i].media[0] ? results[i].media[0] : "../../assets/placeholder.png";
-        
         listings.innerHTML += `
-        <div class="w-96 h-450 border border-black rounded p-5 mt-5 mr-5 ml-5 bg-white shadow-lg flex flex-col flex-1 justify-between max-w-[calc(100%/2)] hover:cursor-pointer">
-            <div class="flex flex-col justify-between mb-5">
-            <p class="text-lg" id="timeCreated">Created: ${created}</p>
-                <p class="font-bold" id="title">${title}</p>
-            </div>
-            <div class="flex-grow">
-                <img class="w-60 h-60 object-cover" src="${media}" onerror="this.onerror=null; this.src='../../assets/placeholder.png';" alt="placeholder image" />
-            </div>
-            <div>
-                <p class="text-s" id="tags">${tags || ""}</p>
-                <p class="mt-1" text-s>Current Bid:</p>
-                <p>Time Left:</p>
-            </div>
-            <div class="flex justify-between mt-2">
-                <div class="flex flex-row gap-2">
-                <button class="w-36 bg-customBlue rounded shadow-lg hover:underline font-inder">BID</button>
-                <input type="number" class="rounded w-28 shadow-lg border" />
-            </div>
-            <button class="w-36 bg-customBlue rounded shadow-lg hover:underline font-inder">Buy Now</button>
-            </div>
-        </div>`;
+            <div class="w-96 h-450 border border-black rounded p-5 mt-5 mr-5 ml-5 bg-white shadow-lg flex flex-col flex-1 justify-between max-w-[calc(100%/2)] hover:cursor-pointer">
+                <div class="flex flex-col justify-between mb-5">
+                    <p class="text-lg" id="timeCreated">Created: ${created}</p>
+                    <p class="font-bold" id="title">${title}</p>
+                </div>
+                <div class="flex-grow">
+                    <img class="w-60 h-60 object-cover" src="${mediaUrl}" onerror="this.onerror=null; this.src='../../assets/placeholder.png';" alt="placeholder image" />
+                </div>
+                <div>
+                    <p class="text-s" id="tags">${tags || ""}</p>
+                    <p class="mt-1" text-s>Current Bid:</p>
+                    <p>Time Left: <span id="time-left-${i}">${timeLeftString}</span></p>
+                </div>
+                <div class="flex justify-between mt-2">
+                    <button class="w-36 bg-customBlue rounded shadow-lg hover:underline font-inder">BID</button>
+                    <input type="number" class="rounded w-28 shadow-lg border" />
+                    <button class="w-36 bg-customBlue rounded shadow-lg hover:underline font-inder">Buy Now</button>
+                </div>
+            </div>`;
+    });
+
+    loader.classList.add('hidden'); 
+
+    //Update counter every second
+    setInterval(() => {
+        activeResults.forEach((result, i) => {
+            const endsAt = result.endsAt;
+            const timeLeft = getTimeLeft(endsAt);
+            const timeLeftString = formatTimeLeft(timeLeft);
+            document.getElementById(`time-left-${i}`).textContent = timeLeftString;
+        });
+    }, 1000);
 }
-}
-renderListings()
+
+renderListings();
+
