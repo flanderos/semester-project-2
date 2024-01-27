@@ -15,22 +15,19 @@ export function loginUser(email, password) {
         return response.json();
     })
     .then(data => {
-        const token = data.accessToken; 
+        const token = data.accessToken;
+        const credits = data.credits; 
+        const name = data.name; 
+        
         localStorage.setItem('token', token);
+        localStorage.setItem('credits', credits); 
+        localStorage.setItem('name', name); 
+        
         console.log('Login successful');
-        window.location.href = 'auction.html'; 
-        console.log(data)
+        window.location.href = 'auction.html';
+        console.log(data);
     })
     .catch(error => {
         console.error('Error:', error);
-    });
-}
-
-if (loginButton) {
-    loginButton.addEventListener('click', function(event) {
-        event.preventDefault(); 
-        const emailInput = document.getElementById('emailInput');
-        const passwordInput = document.getElementById('passwordInput');
-        loginUser(emailInput.value, passwordInput.value); 
     });
 }
