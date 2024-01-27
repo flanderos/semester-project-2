@@ -19,17 +19,22 @@ function formatTimeLeft(timeLeft) {
 export const renderListings = async () => {
     loader.classList.remove('hidden'); // Show loader
     const limit = 8
-    const url = `https://api.noroff.dev/api/v1/auction/listings?sort=endsAt&limit=${limit}`;
+    const url = `https://api.noroff.dev/api/v1/auction/listings?sort=endsAt`;
     const response = await fetch(url);
     const results = await response.json();
 
+    console.log(results)
+
     // Removes finished posts
+    const currentDate = new Date(); 
     const activeResults = results.filter(result => {
-        const timeLeft = getTimeLeft(result.endsAt);
-        return timeLeft > 0; // Check if time left is positive
-    }); 
+        const endDate = new Date(result.endsAt);
+        return endDate > currentDate; 
+    });
 
     listings.innerHTML = ''; 
+
+    activeResults.sort((a, b) => getTimeLeft(a.endsAt) - getTimeLeft(b.endsAt));
 
     activeResults.forEach((result, i) => {
         const { title, created, tags, media, endsAt } = result;
