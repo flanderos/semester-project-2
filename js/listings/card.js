@@ -1,20 +1,20 @@
 const listings = document.querySelector("#allthelistings");
 const loader = document.querySelector("#loader");
 
-function getTimeLeft(endsAt) {
+export function getTimeLeft(endsAt) {
     const endDate = new Date(endsAt);
     const now = new Date();
     return endDate - now;
 }
 
-function formatTimeLeft(timeLeft) {
+export function formatTimeLeft(timeLeft) {
     const hours = Math.floor(timeLeft / 3600000);
     const minutes = Math.floor((timeLeft % 3600000) / 60000);
     const seconds = Math.floor((timeLeft % 60000) / 1000);
     return `${hours}:${minutes}:${seconds}`;
 }
 
-// Funksjon for å legge til hendelseslyttere på postelementene
+// Add click listeners to the post elements
 function addClickListeners(activeResults) {
     activeResults.forEach((result) => {
         const postElement = document.getElementById(`post-${result.id}`);
@@ -58,15 +58,13 @@ export const renderPost = (result, i) => {
 };
 
 export const renderListings = async () => {
-    loader.classList.remove('hidden'); // Show loader
-    const limit = 40
+    loader.classList.remove('hidden');
+    const limit = 40;
     const url = `https://api.noroff.dev/api/v1/auction/listings?sort=endsAt&limit=${limit}`;
     const response = await fetch(url);
     const results = await response.json();
 
-    console.log(results)
-
-    // Removes finished posts
+    // Remove finished posts
     const currentDate = new Date();
     const activeResults = results.filter(result => {
         const endDate = new Date(result.endsAt);
@@ -94,7 +92,7 @@ export const renderListings = async () => {
             document.getElementById(`time-left-${i}`).textContent = timeLeftString;
         });
     }, 1000);
-}
+};
 
 renderListings();
 
