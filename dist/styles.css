@@ -954,6 +954,10 @@ video {
   text-decoration: underline;
 }
 
+.hover\:cursor-pointer:hover {
+  cursor: pointer;
+}
+
 .hover\:underline:hover {
   text-decoration-line: underline;
 }
