@@ -17,7 +17,7 @@ export const renderListings = async () => {
         const media = results[i].media[0] ? results[i].media[0] : "../../assets/placeholder.png";
         
         listings.innerHTML += `
-        <div class="w-96 h-450 border border-black rounded p-5 mt-5 bg-white shadow-lg flex flex-col justify-between">
+        <div class="w-96 h-450 border border-black rounded p-5 mt-5 mr-5 ml-5 bg-white shadow-lg flex flex-col flex-1 justify-between max-w-[calc(100%/2)]">
             <div class="flex flex-col justify-between mb-5">
             <p class="text-lg" id="timeCreated">Created: ${created}</p>
                 <p class="font-bold" id="title">${title}</p>
