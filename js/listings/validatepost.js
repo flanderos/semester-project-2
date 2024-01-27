@@ -71,6 +71,8 @@ export function validateForm(event) {
 
       if (isFormValid) {
         postItem();
+        window.location.href = 'auction.html';
+        alert("posted successfully")
       } else {
         console.log("Validering mislyktes. Vennligst fyll ut alle feltene riktig.");
       }

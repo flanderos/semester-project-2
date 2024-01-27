@@ -11,6 +11,8 @@ export const renderListings = async () => {
 
     for (let i = 0; i < results.length; i++) {
 
+        results.sort((a, b) => new Date(b.created) - new Date(a.created));
+
         const title = results[i].title;
         const created = results[i].created;
         const tags = results[i].tags;
