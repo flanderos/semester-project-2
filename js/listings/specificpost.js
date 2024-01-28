@@ -6,13 +6,12 @@ export function getSpecificPost() {
     const postId = urlParams.get('id');
 
     if (!postId) {
-        
-        return; 
+        return; // If postId is not present in the URL, exit the function.
     }
 
     const thePost = document.querySelector("#thepost");
 
-    // Fetch api for the specific post
+    // Fetch API data for the specific post
     fetch(`https://api.noroff.dev/api/v1/auction/listings/${postId}?_seller&_bids=true`)
         .then(response => {
             if (!response.ok) {
@@ -21,8 +20,8 @@ export function getSpecificPost() {
             return response.json();
         })
         .then(data => {
-            // render data
-            const { created, title, media, tags, endsAt, description, bids } = data; // Bruk data fra API-forespørselen
+            // Render data
+            const { created, title, media, tags, endsAt, description, bids } = data; // Use data from the API response
             const mediaUrl = media[0] ? media[0] : "../../assets/placeholder.png";
             const timeLeft = getTimeLeft(endsAt);
             const timeLeftString = formatTimeLeft(timeLeft);
@@ -35,16 +34,14 @@ export function getSpecificPost() {
                 bidsList.appendChild(bidItem);
             });
             
-            // Finn siste bud
+            // Find the last bid
             const lastBid = bids[bids.length - 1];
-            
-            console.log(data);
             
             thePost.innerHTML = `<div class="h-2/3 w-[80vw] mt-8 flex justify-center items-center mb-12" data-id=${postId} id="thepost">
                 <div class="w-[70%] h-[70%] border border-black rounded p-5 bg-white shadow-lg flex flex-col justify-between max-w-[calc(100%/2)]">
                     <div class="flex flex-col justify-between mb-5">
                         <p class="text-lg" id="timeCreated">Created: ${created}</p>
-                        <p class=" text-lg font-bold" id="title">${title}</p>
+                        <p class="text-lg font-bold" id="title">${title}</p>
                         <p class="text-sm">${description}</p>
                     </div>
                     <div class="flex-grow">
@@ -66,8 +63,6 @@ export function getSpecificPost() {
                     </div>
                 </div>
             </div>`;
-            ;
-            
 
             const timeLeftElement = document.getElementById('time-left');
             setInterval(() => {
@@ -78,9 +73,8 @@ export function getSpecificPost() {
         })
         .catch(error => {
             console.error('Error fetching specific post data:', error);
-            
         });
 }
 
-// Kall funksjonen for å hente detaljer om den spesifikke posten
+// Call the function to fetch details about the specific post
 getSpecificPost();
