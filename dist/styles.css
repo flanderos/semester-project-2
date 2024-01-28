@@ -647,6 +647,10 @@ video {
   margin-top: 2rem;
 }
 
+.mb-96 {
+  margin-bottom: 24rem;
+}
+
 .inline-block {
   display: inline-block;
 }
@@ -777,6 +781,14 @@ video {
 
 .max-w-\[calc\(100\%\/2\)\] {
   max-width: calc(100% / 2);
+}
+
+.max-w-\[calc\(100\%\)\] {
+  max-width: calc(100%);
+}
+
+.max-w-\[calc\(90\%\)\] {
+  max-width: calc(90%);
 }
 
 .flex-1 {
@@ -918,6 +930,11 @@ video {
 .bg-red-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(254 226 226 / var(--tw-bg-opacity));
+}
+
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
 .object-cover {
