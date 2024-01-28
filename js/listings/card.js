@@ -1,29 +1,38 @@
 const listings = document.querySelector("#allthelistings");
+let offset = 0;
+let activeResults = [];
+let timerInterval;
+let isFirstLoad = true;
 
 export function getTimeLeft(endsAt) {
     const endDate = new Date(endsAt);
     const now = new Date();
-    return endDate - now;
+    const timeLeft = endDate - now;
+    return timeLeft > 0 ? timeLeft : 0;
 }
 
 export function formatTimeLeft(timeLeft) {
+    if (timeLeft <= 0) {
+        return "00:00:00";
+    }
     const hours = Math.floor(timeLeft / 3600000);
     const minutes = Math.floor((timeLeft % 3600000) / 60000);
     const seconds = Math.floor((timeLeft % 60000) / 1000);
-    return `${hours}:${minutes}:${seconds}`;
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
 
-// Add click listeners to the post elements
-function addClickListeners(activeResults) {
+function addClickListeners() {
     activeResults.forEach((result) => {
         const postElement = document.getElementById(`post-${result.id}`);
-        postElement.addEventListener('click', () => {
-            window.location.href = `specificpost.html?id=${result.id}`;
-        });
+        if (postElement) {
+            postElement.addEventListener('click', () => {
+                window.location.href = `specificpost.html?id=${result.id}`;
+            });
+        }
     });
 }
 
-export const renderPost = (result, i) => {
+export const renderPost = (result) => {
     const { title, created, tags, media, endsAt, id } = result;
     const mediaUrl = media[0] ? media[0] : "../../assets/placeholder.png";
     const timeLeft = getTimeLeft(endsAt);
@@ -44,7 +53,7 @@ export const renderPost = (result, i) => {
         <div>
             <p class="text-s" id="tags">${tags || ""}</p>
             <p class="mt-1" text-s>Current Bid:</p>
-            <p>Time Left: <span id="time-left-${i}">${timeLeftString}</span></p>
+            <p>Time Left: <span id="time-left-${id}">${timeLeftString}</span></p>
         </div>
         <div class="flex justify-between mt-2">
             <button class="w-36 bg-customBlue rounded shadow-lg hover:underline font-inder">BID</button>
@@ -52,48 +61,81 @@ export const renderPost = (result, i) => {
             <button class="w-36 bg-customBlue rounded shadow-lg hover:underline font-inder">Buy Now</button>
         </div>
     `;
-
+    postElement.setAttribute('data-ends-at', endsAt);
     listings.appendChild(postElement);
 };
 
 export const renderListings = async () => {
     const loader = document.querySelector("#loader");
     loader.classList.remove('hidden');
+
     const limit = 40;
-    const url = `https://api.noroff.dev/api/v1/auction/listings?sort=endsAt&limit=${limit}`;
+    const url = `https://api.noroff.dev/api/v1/auction/listings?sort=endsAt&sortOrder=asc&limit=${limit}&offset=${offset}&_active=true`;
     const response = await fetch(url);
     const results = await response.json();
 
-    // Remove finished posts
-    const currentDate = new Date();
-    const activeResults = results.filter(result => {
-        const endDate = new Date(result.endsAt);
-        return endDate > currentDate;
-    });
+    console.log("Resultater fra API:", results);
 
-    listings.innerHTML = '';
+    if (isFirstLoad) {
+        listings.innerHTML = '';
+        isFirstLoad = false;
+    }
 
-    activeResults.sort((a, b) => getTimeLeft(a.endsAt) - getTimeLeft(b.endsAt));
+    activeResults = [...activeResults, ...results];
 
-    activeResults.forEach((result, i) => {
-        renderPost(result, i);
-    });
-
-    loader.classList.add('hidden');
-
-    addClickListeners(activeResults);
-
-    // Update counter every second
-    setInterval(() => {
-        activeResults.forEach((result, i) => {
-            const endsAt = result.endsAt;
-            const timeLeft = getTimeLeft(endsAt);
-            const timeLeftString = formatTimeLeft(timeLeft);
-            document.getElementById(`time-left-${i}`).textContent = timeLeftString;
+    if (activeResults.length >= 40) {
+        activeResults.slice(0, 40).forEach((result) => {
+            renderPost(result);
         });
-    }, 1000);
+        loader.classList.add('hidden');
+    } else {
+        renderListings();
+    }
+
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(updateTimers, 1000);
+
+    // Call addClickListeners to attach click event listeners to the posts
+    addClickListeners();
 };
 
+const showMoreButton = document.querySelector("#showmorebutton");
+
+const showMorePosts = () => {
+    renderListings();
+}
+
+if (showMoreButton) {
+    showMoreButton.addEventListener("click", showMorePosts);
+}
+
+function updateTimers() {
+    activeResults.forEach(result => {
+        const timeLeft = getTimeLeft(result.endsAt);
+        const timeLeftString = formatTimeLeft(timeLeft);
+        const timerElement = document.getElementById(`time-left-${result.id}`);
+        if (timerElement) {
+            timerElement.textContent = timeLeftString;
+        }
+    });
+}
+
 renderListings();
+setInterval(updateTimers, 1000);
+
+activeResults.sort((a, b) => {
+    const endDateA = new Date(a.endsAt);
+    const endDateB = new Date(b.endsAt);
+    return endDateA - endDateB;
+});
+
+
+
+
+
+
+
+
+
 
 
