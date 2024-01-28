@@ -5,6 +5,11 @@ export function getSpecificPost() {
     const urlParams = new URLSearchParams(window.location.search);
     const postId = urlParams.get('id');
 
+    if (!postId) {
+        
+        return; 
+    }
+
     const thePost = document.querySelector("#thepost");
 
     // Fetch api for the specific post
