@@ -67,6 +67,9 @@ export const renderPost = (result) => {
 
 export const renderListings = async () => {
     const loader = document.querySelector("#loader");
+    if (!loader) {
+        return; // Loader element not found, exit the function
+    }
     loader.classList.remove('hidden');
 
     const limit = 40;
@@ -75,6 +78,11 @@ export const renderListings = async () => {
     const results = await response.json();
 
     console.log("Resultater fra API:", results);
+
+    const listings = document.querySelector("#allthelistings");
+    if (!listings) {
+        return; // Listings element not found, exit the function
+    }
 
     if (isFirstLoad) {
         listings.innerHTML = '';
@@ -95,7 +103,7 @@ export const renderListings = async () => {
     if (timerInterval) clearInterval(timerInterval);
     timerInterval = setInterval(updateTimers, 1000);
 
-    // Call addClickListeners to attach click event listeners to the posts
+    
     addClickListeners();
 };
 

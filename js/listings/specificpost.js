@@ -1,5 +1,8 @@
 import { renderPost } from "./card.js";
 import { getTimeLeft, formatTimeLeft } from "./card.js";
+import { testFunction } from "./bid.js";
+
+let isFirstLoad = true;
 
 export function getSpecificPost() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -10,6 +13,9 @@ export function getSpecificPost() {
     }
 
     const thePost = document.querySelector("#thepost");
+    const loader = document.querySelector("#loader");
+
+    loader.style.display = "block";
 
     // Fetch API data for the specific post
     fetch(`https://api.noroff.dev/api/v1/auction/listings/${postId}?_seller&_bids=true`)
@@ -33,6 +39,8 @@ export function getSpecificPost() {
                 bidItem.textContent = `Amount: ${bid.amount}, Name: ${bid.bidderName}`;
                 bidsList.appendChild(bidItem);
             });
+
+            loader.style.display = "none";
             
             // Find the last bid
             const lastBid = bids[bids.length - 1];
@@ -58,7 +66,7 @@ export function getSpecificPost() {
                         
                     </div>
                     <div class="flex justify-start mt-2">
-                        <button class="w-36 bg-customBlue rounded shadow-lg hover:underline font-inder">BID</button>
+                        <button class="w-36 bg-customBlue rounded shadow-lg hover:underline font-inder" id="bidbutton">BID</button>
                         <input type="text" class="rounded w-28 shadow-lg border" />
                     </div>
                 </div>

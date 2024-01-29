@@ -651,6 +651,10 @@ video {
   margin-bottom: 3rem;
 }
 
+.block {
+  display: block;
+}
+
 .inline-block {
   display: inline-block;
 }
