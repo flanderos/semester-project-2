@@ -1,8 +1,8 @@
 import { renderPost } from "./card.js";
 import { getTimeLeft, formatTimeLeft } from "./card.js";
-import { testFunction } from "./bid.js";
 
-let isFirstLoad = true;
+
+
 
 export function getSpecificPost() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -67,7 +67,7 @@ export function getSpecificPost() {
                     </div>
                     <div class="flex justify-start mt-2">
                         <button class="w-36 bg-customBlue rounded shadow-lg hover:underline font-inder" id="bidbutton">BID</button>
-                        <input type="text" class="rounded w-28 shadow-lg border" />
+                        <input type="text" class="rounded w-28 shadow-lg border" id="amountinput" />
                     </div>
                 </div>
             </div>`;

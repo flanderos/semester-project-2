@@ -20,7 +20,7 @@ export function loginUser(email, password) {
         const name = data.name; 
         
         localStorage.setItem('token', token);
-        localStorage.setItem('credits', credits); 
+        localStorage.setItem('userCredits', credits); 
         localStorage.setItem('name', name); 
         
         console.log('Login successful');
