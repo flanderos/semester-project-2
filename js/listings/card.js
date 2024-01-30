@@ -49,7 +49,7 @@ export const renderPost = (result) => {
             <p class="font-bold" id="title">${title}</p>
         </div>
         <div class="flex-grow">
-            <img class="w-60 h-60 object-cover" src="${mediaUrl}" onerror="this.onerror=null; this.src='../../assets/placeholder.png';" alt="placeholder image" />
+            <img class="w-60 h-60 object-cover" src="${mediaUrl}" onerror="this.onerror=null; this.src='./assets/placeholder.png';" alt="placeholder image" />
         </div>
         <div class="mt-2">
             <p class="text-s" id="tags">${tags || ""}</p>
