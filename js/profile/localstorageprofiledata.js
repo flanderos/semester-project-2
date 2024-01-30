@@ -41,7 +41,7 @@ export const renderProfileCard = async () => {
                         <div id="username">Username: ${userName}</div>
                         <div id="userEmail" class="mb-8">Email: ${userEmail}</div>
                         <div id="avatar">
-                            <img class="w-48 rounded mb-4 border border-black" src="${userAvatar || 'assets/defaultavatar.png'}" alt="User Avatar"/>
+                            <img class="w-48 rounded mb-4 border border-black" src="${userAvatar || './assets/defaultavatar.png'}" alt="User Avatar"/>
                         </div>
                         <!-- Other buttons and content -->
                     </div>

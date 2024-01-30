@@ -28,7 +28,7 @@ export function getSpecificPost() {
         .then(data => {
             // Render data
             const { created, title, media, tags, endsAt, description, bids } = data; // Use data from the API response
-            const mediaUrl = media[0] ? media[0] : "../../assets/placeholder.png";
+            const mediaUrl = media[0] ? media[0] : "./assets/placeholder.png";
             const timeLeft = getTimeLeft(endsAt);
             const timeLeftString = formatTimeLeft(timeLeft);
             
@@ -53,7 +53,7 @@ export function getSpecificPost() {
                         <p class="text-sm">${description}</p>
                     </div>
                     <div class="flex-grow">
-                        <img class="w-11/12 h-2/3 object-cover" src="${mediaUrl}" onerror="this.onerror=null; this.src='../../assets/placeholder.png';" alt="placeholder image" />
+                        <img class="w-11/12 h-2/3 object-cover" src="${mediaUrl}" onerror="this.onerror=null; this.src='./assets/placeholder.png';" alt="placeholder image" />
                     </div>
                     <div>
                         <p class="text-s" id="tags">${tags || "tags"}</p>
@@ -65,8 +65,8 @@ export function getSpecificPost() {
                         <p class="">Time Left: <span id="time-left">${timeLeftString}</span></p>
                         
                     </div>
-                    <div class="flex justify-start mt-2">
-                        <button class="w-36 bg-customBlue rounded shadow-lg hover:underline font-inder" id="bidbutton">BID</button>
+                    <div class="flex justify-start mt-14">
+                        <button class="w-36 bg-green-300 rounded shadow-lg hover:underline font-inder" id="bidbutton">BID</button>
                         <input type="text" class="rounded w-28 shadow-lg border" id="amountinput" />
                     </div>
                 </div>
