@@ -1,7 +1,6 @@
 const listings = document.querySelector("#allthelistings");
 let offset = 0;
 let activeResults = [];
-let timerInterval;
 let isFirstLoad = true;
 
 export function getTimeLeft(endsAt) {
@@ -72,14 +71,15 @@ export const renderListings = async () => {
     }
     loader.classList.remove('hidden');
 
+    
+
     const limit = 40;
     const url = `https://api.noroff.dev/api/v1/auction/listings?sort=endsAt&sortOrder=asc&limit=${limit}&offset=${offset}&_active=true`;
     const response = await fetch(url);
-    const results = await response.json();
+    const newResults = await response.json();
 
-    console.log("Resultater fra API:", results);
+    
 
-    const listings = document.querySelector("#allthelistings");
     if (!listings) {
         return; // Listings element not found, exit the function
     }
@@ -89,33 +89,32 @@ export const renderListings = async () => {
         isFirstLoad = false;
     }
 
-    activeResults = [...activeResults, ...results];
+    activeResults = [...activeResults, ...newResults];
 
-    if (activeResults.length >= 40) {
-        activeResults.slice(0, 40).forEach((result) => {
-            renderPost(result);
-        });
-        loader.classList.add('hidden');
-    } else {
-        renderListings();
-    }
+    newResults.forEach((result) => {
+        renderPost(result);
+    });
 
-    if (timerInterval) clearInterval(timerInterval);
-    timerInterval = setInterval(updateTimers, 1000);
+    loader.classList.add('hidden');
 
-    
     addClickListeners();
+
+     
 };
 
 const showMoreButton = document.querySelector("#showmorebutton");
 
 const showMorePosts = () => {
+    offset += 40; 
     renderListings();
 }
 
 if (showMoreButton) {
     showMoreButton.addEventListener("click", showMorePosts);
 }
+
+
+renderListings();
 
 function updateTimers() {
     activeResults.forEach(result => {
@@ -128,8 +127,9 @@ function updateTimers() {
     });
 }
 
-renderListings();
-setInterval(updateTimers, 1000);
+setInterval(updateTimers, 1000);  
+
+
 
 activeResults.sort((a, b) => {
     const endDateA = new Date(a.endsAt);
