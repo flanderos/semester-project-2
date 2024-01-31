@@ -1,3 +1,6 @@
+import { validateForm } from "./validation.js";
+
+
 export function registerUser() {
     const nameInput = document.getElementById('nameInput'); 
     const emailInput = document.getElementById('emailInput');
@@ -39,12 +42,9 @@ export function registerUser() {
     });
 }
 
+document.getElementById('registerButton').addEventListener('click', validateForm);
 
 
- document.getElementById('registerButton').addEventListener('click', function(event) {
-    event.preventDefault(); 
-    registerUser();
- 
-});
+
 
 //added comment for first push
