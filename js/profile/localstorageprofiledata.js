@@ -134,11 +134,3 @@ export const editAvatar = async () => {
 };
 
 
-
-
-
-  
-
- 
-
-

@@ -1,3 +1,5 @@
+import { registerUser } from "./register.js";
+
 export function validateForm(event) {
     if (event) {
       event.preventDefault();
@@ -20,15 +22,7 @@ export function validateForm(event) {
       } else {
         nameError.classList.add("hidden");
       }
-  
-      // Validate name format
-  
-      /* if (validateName(nameInput.value) === true) {
-        nameError.classList.remove = "hidden";
-      } else {
-        nameError.classList.add = "hidden";
-      }
-   */
+   
       // Validate email format
   
       if (!validateEmail(emailInput.value)) {
@@ -78,10 +72,3 @@ export function validateForm(event) {
     return patternMatches && email.endsWith("@stud.noroff.no") || email.endsWith("noroff.no");
   }
   
-  // Function to validate name format
-  
-  function validateName(nameInput) {
-    const nameRegex = /^[A-Za-z\s]+$/;
-    const patternMatchesName = nameRegex.test(nameInput);
-    return patternMatchesName;
-  }
