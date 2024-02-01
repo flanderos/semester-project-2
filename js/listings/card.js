@@ -40,29 +40,28 @@ export const renderPost = (result) => {
   const timeLeftString = formatTimeLeft(timeLeft);
 
   const postElement = document.createElement("div");
-  postElement.className =
-    "border border-black rounded p-5 mt-5 mx-auto bg-white shadow-lg max-w-[calc(90%)] hover:cursor-pointer";
+  postElement.className = "my-4 flex justify-center align-center ml-5 mb-5";
   postElement.id = `post-${id}`;
 
   postElement.innerHTML = `
-    <div class="border border-black rounded p-5 mr-5 ml-5 bg-white shadow-lg hover:cursor-pointer" id="post-${id}">
-        <div class="mb-5">
-            <p class="text-lg" id="timeCreated">Created: ${created}</p>
-            <p class="font-bold" id="title">${title}</p>
-        </div>
-        <div class="flex-grow">
-            <img class="w-60 h-60 object-cover" src="${mediaUrl}" onerror="this.onerror=null; this.src='./assets/placeholder.png';" alt="placeholder image" />
-        </div>
-        <div class="mt-2">
-            <p class="text-s" id="tags">${tags || ""}</p>
-            <p class="mt-1" text-s>Current Bid:</p>
-            <p>Time Left: <span id="time-left-${id}">${timeLeftString}</span></p>
-        </div>
-        <div class="mt-2">
-            <button class="w-full bg-customBlue rounded shadow-lg hover:underline font-inder">More Info</button>
-        </div>
+  <div class="border border-black rounded p-5 bg-white shadow-lg hover:cursor-pointer" id="post-${id}">
+    <div class="mb-5">
+      <p class="text-lg" id="timeCreated">Created: ${created}</p>
+      <p class="font-bold" id="title">${title}</p>
     </div>
-    `;
+    <div class="flex items-center justify-center mb-2"> <!-- Center vertically and horizontally -->
+      <img class="w-60 h-60 object-cover" src="${mediaUrl}" onerror="this.onerror=null; this.src='./assets/placeholder.png';" alt="placeholder image" />
+    </div>
+    <div class="mt-2">
+      <p class="text-s" id="tags">${tags || ""}</p>
+      <p class="mt-1 text-s">Current Bid:</p>
+      <p>Time Left: <span id="time-left-${id}">${timeLeftString}</span></p>
+    </div>
+    <div class="mt-2">
+      <button class="w-full bg-customBlue rounded shadow-lg hover:underline font-inder">More Info</button>
+    </div>
+  </div>
+`;
   postElement.setAttribute("data-ends-at", endsAt);
   listings.appendChild(postElement);
 };
