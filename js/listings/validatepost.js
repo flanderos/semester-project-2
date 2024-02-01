@@ -3,16 +3,15 @@ import { postItem } from "./createpost.js";
 const title = document.querySelector("#title");
 const price = document.querySelector("#price");
 const tags = document.querySelector("#tags");
-const image = document.querySelector("#image");
+
 const description = document.querySelector("#description");
-const endDate = document.querySelector("#enddate");
+
 const submitButton = document.querySelector("#submitbutton");
 const titleError = document.querySelector("#titleerror");
 const priceError = document.querySelector("#priceerror");
 const tagsError = document.querySelector("#tagserror");
-const imageError = document.querySelector("#imageerror");
+
 const descriptionError = document.querySelector("#descriptionerror");
-const endDateError = document.querySelector("#enddateerror");
 
 document.addEventListener("DOMContentLoaded", () => {
   const now = new Date();
