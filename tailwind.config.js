@@ -18,7 +18,7 @@ module.exports = {
         inder: ["Inder", "sans-serif"],
       },
       height: {
-        '450': '450px', // Legger til en ny høydeverdi
+        450: "450px", // Legger til en ny høydeverdi
       },
     },
   },
