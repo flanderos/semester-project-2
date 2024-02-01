@@ -50,12 +50,6 @@ export const renderProfileCard = async () => {
                         <p class="text-sm mb-4" id="credit">Credits: ${userCredits}</p>
                     </div>
                 </div>
-                <div id="userListings" class="mt-4">
-                    <h4 class="font-bold text-center">Listed Items</h4>
-                    <ul id="listedItems" class="list-inside list-disc pl-4 text-sm text-center">
-                        <!-- Dynamically generated listings will go here -->
-                    </ul>
-                </div>
                 <div class="flex justify-center mt-4">
                     <!-- Other buttons and content can go here -->
                 </div>
@@ -75,9 +69,6 @@ export const renderProfileCard = async () => {
     console.error("Error fetching profile:", error);
     return;
   }
-
-  // Fetch listings for the profile
-  const userListings = await getListingsByProfile();
 };
 
 renderProfileCard();
