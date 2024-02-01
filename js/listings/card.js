@@ -1,6 +1,6 @@
-const listings = document.querySelector("#allthelistings");
+export const listings = document.querySelector("#allthelistings");
 let offset = 0;
-let activeResults = [];
+export let activeResults = [];
 let isFirstLoad = true;
 
 export function getTimeLeft(endsAt) {
@@ -20,7 +20,7 @@ export function formatTimeLeft(timeLeft) {
     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
 
-function addClickListeners() {
+export function addClickListeners() {
     activeResults.forEach((result) => {
         const postElement = document.getElementById(`post-${result.id}`);
         if (postElement) {
@@ -129,7 +129,7 @@ function updateTimers() {
 
 setInterval(updateTimers, 1000);  
 
-
+//Sort post based on enddate
 
 activeResults.sort((a, b) => {
     const endDateA = new Date(a.endsAt);
