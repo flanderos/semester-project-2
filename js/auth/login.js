@@ -1,4 +1,5 @@
 const loginButton = document.querySelector("#loginButton");
+const loginError = document.querySelector("#loginError");
 
 export function loginUser(email, password) {
   fetch("https://api.noroff.dev/api/v1/auction/auth/login", {
@@ -24,10 +25,12 @@ export function loginUser(email, password) {
       localStorage.setItem("name", name);
 
       console.log("Login successful");
+      loginError.classList.add("hidden");
       window.location.href = "auction.html";
       console.log(data);
     })
     .catch((error) => {
       console.error("Error:", error);
+      loginError.classList.remove("hidden");
     });
 }
