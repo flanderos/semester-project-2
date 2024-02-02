@@ -12,49 +12,48 @@
     />
   </head>
   <body class="flex items-center justify-center flex-col bg-customGrey">
-    <div class="absolute top-0 mt-16">
-      <h1 class="text-5xl font-sans">Moomin Auction House!</h1>
-    </div>
-    <div
-      class="w-full border h-[170px] border-black flex justify-between items-center bg-white mx-4"
-    >
-      <nav class="flex justify-start flex-1 absolute top-0 mt-36 pl-3">
-        <ul class="flex flex-row text-base gap-8">
-          <li>
-            <a href="auction.html" class="inline-block" id="active">Listings</a>
-          </li>
-          <li>
-            <a href="#" class="inline-block">Favorites</a>
-          </li>
-          <li>
-            <a href="#" class="inline-block">Profile</a>
-          </li>
-          <li>
-            <a href="#" class="inline-block">My Bids</a>
-          </li>
-        </ul>
-      </nav>
-
-      <div class="flex justify-end flex-1">
-                <button
-          class= "bg-customBlue rounded p-1 w-48 shadow-lg flex flex-row justify-between" id="logOutButton"
-        >
-          Log out
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-6 h-6"
+    <div class="bg-white p-4 w-full md:mx-5 lg:mx-5 shadow-md">
+      <div class="w-full md:mx-5 lg:mx-5">
+        <h1 class="text-2xl md:text-4xl lg:text-5xl font-kreon mt-5">
+          The Auction House!
+        </h1>
+      </div>
+      <div class="flex justify-between items-center mt-4 md:mt-6 lg:mt-8">
+        <nav class="md:flex items-center md:flex-row flex-col">
+          <ul
+            class="flex flex-row text-base md:text-lg lg:text-xl gap-4 md:gap-6 lg:gap-8"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-        </button>
+            <li>
+              <a
+                href=""
+                class="text-black hover:underline classActive"
+                id="active"
+                >Auction</a
+              >
+            </li>
+            <li>
+              <a href="profile.html" class="text-black hover:underline"
+                >Profile</a
+              >
+            </li>
+            <li>
+              <a href="listings.html" class="text-black hover:underline"
+                >My Listings</a
+              >
+            </li>
+            <li>
+              <a href="#" class="text-black hover:underline">My Bids</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="absolute top-0 right-0 mt-2 mr-2">
+          <button
+            class="bg-green-200 text-black rounded-lg py-1 px-2 md:py-2 md:px-4 shadow-md"
+            id="logOutButton"
+          >
+            Log out
+          </button>
+        </div>
       </div>
     </div>
     <h2 class="text-2xl mt-16">"List your item under and submit!"</h2>
@@ -66,24 +65,53 @@
       >
         <div class="flex flex-col items-start justify-center">
           <label>Title:</label
-          ><input type="text" class="border border-black rounded w-72" id="title" />
+          ><input
+            type="text"
+            class="border border-black rounded w-72"
+            id="title"
+          />
           <div id="titleerror" class="text-red-500 hidden">invalid title</div>
           <label>Price</label
-          ><input type="text" class="border border-black rounded w-72" id="price"/>
+          ><input
+            type="text"
+            class="border border-black rounded w-72"
+            id="price"
+          />
           <div id="priceerror" class="text-red-500 hidden">invalid price</div>
           <label>Tags</label
-          ><input type="text" class="border border-black rounded w-72" id="tags" />
+          ><input
+            type="text"
+            class="border border-black rounded w-72"
+            id="tags"
+          />
           <div id="tagserror" class="text-red-500 hidden">invalid tags</div>
           <label>Image</label
-          ><input type="text" class="border border-black rounded w-72" id="image" />
+          ><input
+            type="text"
+            class="border border-black rounded w-72"
+            id="image"
+          />
           <div id="imageerror" class="text-red-500 hidden">invalid image</div>
           <label>Description</label>
-          <input type="text" class="border border-black rounded w-72" id="description" />
-          <div id="descriptionerror" class="text-red-500 hidden">Max 50 characters</div>
+          <input
+            type="text"
+            class="border border-black rounded w-72"
+            id="description"
+          />
+          <div id="descriptionerror" class="text-red-500 hidden">
+            Max 50 characters
+          </div>
           <label>End</label>
-          <input type="datetime-local" class="border border-black rounded w-72" id="enddate" />
+          <input
+            type="datetime-local"
+            class="border border-black rounded w-72"
+            id="enddate"
+          />
           <div id="enddateerror" class="text-red-500 hidden">invalid date</div>
-          <button class="bg-customBlue rounded p-1 shadow-lg mt-5 w-full" id="submitbutton">
+          <button
+            class="bg-customBlue rounded p-1 shadow-lg mt-5 w-full"
+            id="submitbutton"
+          >
             List Item
           </button>
         </div>
