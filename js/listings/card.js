@@ -58,7 +58,7 @@ export const renderPost = (result) => {
       <p>Time Left: <span id="time-left-${id}">${timeLeftString}</span></p>
   </div>
   <div class="mt-2">
-      <button class="w-full bg-customBlue rounded shadow-lg hover:underline font-inder">More Info</button>
+      <button class="w-full bg-customBlue rounded shadow-lg hover:underline">More Info</button>
   </div>
 </div>
   `;
