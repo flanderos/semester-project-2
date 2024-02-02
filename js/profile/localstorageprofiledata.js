@@ -50,6 +50,12 @@ export const renderProfileCard = async () => {
                         <p class="text-sm mb-4" id="credit">Credits: ${userCredits}</p>
                     </div>
                 </div>
+                <div id="userListings" class="mt-4">
+                    <h4 class="font-bold text-center">Listed Items</h4>
+                    <ul id="listedItems" class="list-inside list-disc pl-4 text-sm text-center">
+                        <!-- Dynamically generated listings will go here -->
+                    </ul>
+                </div>
                 <div class="flex justify-center mt-4">
                     <!-- Other buttons and content can go here -->
                 </div>
@@ -122,5 +128,30 @@ export const editAvatar = async () => {
     }, 1000);
   } catch (error) {
     console.error("Error updating avatar:", error);
+  }
+};
+
+export const profileListings = async () => {
+  try {
+    const response = await fetch(
+      `https://api.noroff.dev/api/v1/auction/profiles/${userName}/listings`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(data); // Hent JSON-data fra responsen
+
+    return data; // Returner dataene fra serveren
+  } catch (error) {
+    console.error("An error occurred:", error);
+    throw error;
   }
 };
