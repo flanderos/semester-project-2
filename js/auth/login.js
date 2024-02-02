@@ -34,3 +34,12 @@ export function loginUser(email, password) {
       loginError.classList.remove("hidden");
     });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const emailInput = document.getElementById("emailInput");
+  const savedEmail = localStorage.getItem("userEmail");
+
+  if (emailInput && savedEmail) {
+    emailInput.value = savedEmail;
+  }
+});
