@@ -5,7 +5,7 @@ export function registerUser() {
   const emailInput = document.getElementById("emailInput");
   const passwordInput = document.getElementById("passwordInput");
   const avatarInput = document.getElementById("avatarInput");
-  const errorFromApi = document.querySelector("#apiError");
+  const errorFromApi = document.querySelector("#error");
 
   const userData = {
     name: nameInput.value,
@@ -28,6 +28,7 @@ export function registerUser() {
       return response.json();
     })
     .then((data) => {
+      console.log("Registration successful", data);
       localStorage.setItem("userId", data.id);
       localStorage.setItem("userName", data.name);
       localStorage.setItem("userEmail", data.email);
@@ -36,6 +37,7 @@ export function registerUser() {
       window.location.href = "login.html";
     })
     .catch((error) => {
+      console.error("Error during registration:", error);
       errorFromApi.classList.remove("hidden");
     });
 }
