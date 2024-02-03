@@ -1,4 +1,4 @@
-const logoutButton = document.querySelector("#logOutButton");
+export const logoutButton = document.querySelector("#logOutButton");
 
 export const logOut = () => {
   localStorage.clear();

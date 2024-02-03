@@ -28,7 +28,6 @@ export function registerUser() {
       return response.json();
     })
     .then((data) => {
-      console.log("Registration successful", data);
       localStorage.setItem("userId", data.id);
       localStorage.setItem("userName", data.name);
       localStorage.setItem("userEmail", data.email);
@@ -37,7 +36,6 @@ export function registerUser() {
       window.location.href = "login.html";
     })
     .catch((error) => {
-      console.error("Error during registration:", error);
       errorFromApi.classList.remove("hidden");
     });
 }
