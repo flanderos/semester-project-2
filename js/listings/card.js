@@ -39,12 +39,14 @@ export const renderPost = (result) => {
   const timeLeft = getTimeLeft(endsAt);
   const timeLeftString = formatTimeLeft(timeLeft);
 
+  console.log(result);
+
   const postElement = document.createElement("div");
   postElement.className = "flex justify-center align-center ml-1 mr-1 mb-1";
   postElement.id = `post-${id}`;
 
   postElement.innerHTML = `
-  <div class="my-4 min-h-96 border border-black rounded p-5 bg-white shadow-lg hover:cursor-pointer" id="post-${id}">
+  <div class="min-h-96 border border-black rounded p-5 bg-white shadow-lg hover:cursor-pointer" id="post-${id}">
   <div class="mb-5">
       <p class="text-lg" id="timeCreated">Created: ${created}</p>
       <p class="font-bold" id="title">${title}</p>
@@ -54,7 +56,6 @@ export const renderPost = (result) => {
   </div>
   <div class="mt-2">
       <div class="text-s h-12" id="tags">${tags || ""}</div>
-      <p class="mt-1 text-s">Current Bid:</p>
       <p>Time Left: <span id="time-left-${id}">${timeLeftString}</span></p>
   </div>
   <div class="mt-2">
