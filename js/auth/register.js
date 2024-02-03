@@ -5,6 +5,7 @@ export function registerUser() {
   const emailInput = document.getElementById("emailInput");
   const passwordInput = document.getElementById("passwordInput");
   const avatarInput = document.getElementById("avatarInput");
+  const errorFromApi = document.querySelector("#apiError");
 
   const userData = {
     name: nameInput.value,
@@ -37,7 +38,7 @@ export function registerUser() {
     })
     .catch((error) => {
       console.error("Error during registration:", error);
-      //Add error message here
+      errorFromApi.classList.remove("hidden");
     });
 }
 
