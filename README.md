@@ -1,5 +1,7 @@
 # semester-project-2
 
+###### This is a live and fully functional auction house platform where user can register, log in, view auction posts and sell their own stuff other users can bid on. Users can view their profile and see objects that they have posted, and objects they have bid on. 
+
 ##### npm install
 ##### Run live server
 ##### Register user, If there is userdata stored in localstorage, you will be redirected to loginpage
