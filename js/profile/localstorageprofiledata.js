@@ -19,7 +19,6 @@ export const renderProfileCard = async () => {
     }
 
     const profileData = await response.json();
-    console.log(profileData);
 
     let userEmail = profileData.email;
     let userCredits = profileData.credits;
@@ -147,7 +146,6 @@ export const profileListings = async () => {
     }
 
     const data = await response.json();
-    console.log(data); // Hent JSON-data fra responsen
 
     return data; // Returner dataene fra serveren
   } catch (error) {
