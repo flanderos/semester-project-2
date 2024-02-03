@@ -46,7 +46,7 @@ export const renderPost = (result) => {
   postElement.id = `post-${id}`;
 
   postElement.innerHTML = `
-  <div class="my-4 min-h-96 border border-black rounded p-5 bg-white shadow-lg hover:cursor-pointer" id="post-${id}">
+  <div class="min-h-96 border border-black rounded p-5 bg-white shadow-lg hover:cursor-pointer" id="post-${id}">
   <div class="mb-5">
       <p class="text-lg" id="timeCreated">Created: ${created}</p>
       <p class="font-bold" id="title">${title}</p>
