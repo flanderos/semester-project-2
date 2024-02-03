@@ -67,8 +67,8 @@ export function getSpecificPost() {
                         
                     </div>
                     <div class="flex justify-start mt-14">
-                        <button class="w-36 bg-green-300 rounded shadow-lg hover:underline font-inder" id="bidbutton">BID</button>
-                        <input type="text" class="rounded w-28 shadow-lg border" id="amountinput" />
+                        <button class="w-36 bg-green-300 rounded shadow-lg hover:underline font-inder noshow" id="bidbutton">BID</button>
+                        <input type="text" class="rounded w-28 shadow-lg border noshow" id="amountinput" />
                     </div>
                 </div>
             </div>`;
