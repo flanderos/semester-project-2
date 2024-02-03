@@ -106,7 +106,10 @@ abbr:where([title]) {
 Remove the default font size and weight for headings.
 */
 
-h1,
+h1 {
+  font-family: "poppins";
+}
+,
 h2,
 h3,
 h4,
@@ -2988,6 +2991,7 @@ video {
 
 .classActive {
   text-decoration: underline;
+  font-weight: 600;
 }
 
 .\[a-zA-Z0-9\:\\\\-\\\\\._\$\] {
