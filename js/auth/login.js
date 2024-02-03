@@ -1,4 +1,3 @@
-const loginButton = document.querySelector("#loginButton");
 const loginError = document.querySelector("#loginError");
 
 export function loginUser(email, password) {
@@ -23,6 +22,7 @@ export function loginUser(email, password) {
       localStorage.setItem("token", token);
       localStorage.setItem("userCredits", credits);
       localStorage.setItem("name", name);
+      localStorage.setItem("isLoggedIn", true);
 
       console.log("Login successful");
       loginError.classList.add("hidden");
