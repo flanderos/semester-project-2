@@ -2,7 +2,7 @@
 
 This is a live and fully functional auction house platform where user can register, log in, view auction posts and sell their own stuff other users can bid on. Users can view their profile and see objects that they have posted, and objects they have bid on. 
 
-The site is build with HTML, TailwindCSS and Vanilla Javascript
+The site is build with HTML, TailwindCSS and Vanilla Javascript on the Front End and uses Noroff API for backend. 
 
 ## Installation
 
