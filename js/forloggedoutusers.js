@@ -24,8 +24,10 @@ if (userIsLoggedIn) {
   userCredits.classList.add("hidden");
 }
 
-if (userIsLoggedIn) {
-  createNewListing.classList.remove("hidden");
-} else {
-  createNewListing.classList.add("hidden");
+if (createNewListing) {
+  if (userIsLoggedIn) {
+    createNewListing.classList.remove("hidden");
+  } else {
+    createNewListing.classList.add("hidden");
+  }
 }

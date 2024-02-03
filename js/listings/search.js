@@ -11,8 +11,6 @@ export const searchPostsByTitle = () => {
     (result) => result.title && result.title.toLowerCase().includes(searchTerm),
   );
 
-  console.log(searchTerm);
-
   listings.innerHTML = "";
   filteredResults.forEach((result) => {
     renderPost(result);
@@ -21,7 +19,12 @@ export const searchPostsByTitle = () => {
   addClickListeners();
 };
 
-searchInput.addEventListener("input", () => {
-  console.log("Input event triggered");
-  searchPostsByTitle();
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("searchInput");
+
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      searchPostsByTitle();
+    });
+  }
 });

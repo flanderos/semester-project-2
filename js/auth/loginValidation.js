@@ -30,9 +30,6 @@ export function validateLoginForm(event) {
     if (isFormValid) {
       loginUser(emailInput.value, passwordInput.value);
     } else {
-      console.log(
-        "Innlogging mislyktes. Vennligst fyll ut alle feltene riktig.",
-      );
     }
   }
 }

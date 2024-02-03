@@ -4,11 +4,6 @@ export async function postItem() {
   // Hent token fra localStorage eller en annen kilde
   const token = localStorage.getItem("token");
 
-  if (!token) {
-    console.error("Ingen token funnet, kan ikke poste item");
-    return;
-  }
-
   const endDate = document.querySelector("#enddate");
 
   const itemData = {
@@ -26,7 +21,7 @@ export async function postItem() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // Inkluder token i header
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(itemData),
       },
@@ -38,9 +33,7 @@ export async function postItem() {
 
     const responseData = await response.json();
     console.log("Item posted successfully:", responseData);
-    // Suksessfull handling
   } catch (error) {
     console.error("Error posting item:", error);
-    // Feilhåndtering
   }
 }
