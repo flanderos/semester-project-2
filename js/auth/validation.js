@@ -13,6 +13,7 @@ export function validateForm(event) {
     const passwordError = document.querySelector("#passwordError");
     const loginButton = document.querySelector("#loginButton");
     const registerButton = document.querySelector("#registerButton");
+    const errorFromApi = document.querySelector("#errorfromapi");
 
     // Validate name input
 

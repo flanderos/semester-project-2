@@ -41,15 +41,6 @@ export function validateForm(event) {
       titleError.classList.add("hidden");
     }
 
-    const priceValue = parseFloat(price.value.trim());
-
-    if (isNaN(priceValue) || priceValue < 1 || priceValue > 10000) {
-      priceError.classList.remove("hidden");
-      isFormValid = false;
-    } else {
-      priceError.classList.add("hidden");
-    }
-
     if (tags.value.trim().length < 2 || tags.value.trim().length > 20) {
       tagsError.classList.remove("hidden");
       isFormValid = false;

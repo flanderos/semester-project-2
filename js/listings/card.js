@@ -39,8 +39,6 @@ export const renderPost = (result) => {
   const timeLeft = getTimeLeft(endsAt);
   const timeLeftString = formatTimeLeft(timeLeft);
 
-  console.log(result);
-
   const postElement = document.createElement("div");
   postElement.className = "flex justify-center align-center ml-1 mr-1 mb-1";
   postElement.id = `post-${id}`;

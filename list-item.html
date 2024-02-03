@@ -15,7 +15,7 @@
   <body class="flex items-center justify-center flex-col bg-customGrey">
     <div class="bg-white p-4 w-full md:mx-5 lg:mx-5 shadow-md">
       <div class="w-full md:mx-5 lg:mx-5 flex justify-center">
-        <h1 class="text-2xl md:text-4xl lg:text-5xl mt-5">
+        <h1 class="text-2xl md:text-4xl lg:text-5xl font-poppins mt-5">
           The Auction House!
         </h1>
       </div>
@@ -26,8 +26,8 @@
           >
             <li>
               <a
-                href=""
-                class="text-black hover:underline classActive"
+                href="auction.html"
+                class="text-black hover:underline"
                 id="active"
                 >Auction</a
               >
@@ -37,14 +37,7 @@
                 >Profile</a
               >
             </li>
-            <li>
-              <a href="listings.html" class="text-black hover:underline"
-                >My Listings</a
-              >
-            </li>
-            <li>
-              <a href="#" class="text-black hover:underline">My Bids</a>
-            </li>
+
           </ul>
         </nav>
         <div class="absolute top-0 right-0 mt-1 mr-3 md:relative">
@@ -72,13 +65,6 @@
             id="title"
           />
           <div id="titleerror" class="text-red-500 hidden">invalid title</div>
-          <label>Price</label
-          ><input
-            type="text"
-            class="border border-black rounded w-72"
-            id="price"
-          />
-          <div id="priceerror" class="text-red-500 hidden">invalid price</div>
           <label>Tags</label
           ><input
             type="text"
@@ -107,6 +93,7 @@
             type="datetime-local"
             class="border border-black rounded w-72"
             id="enddate"
+            required
           />
           <div id="enddateerror" class="text-red-500 hidden">invalid date</div>
           <button

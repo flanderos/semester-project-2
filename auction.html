@@ -40,14 +40,6 @@
                 >Profile</a
               >
             </li>
-            <li class="noshow">
-              <a href="listings.html" class="text-black hover:underline"
-                >My Listings</a
-              >
-            </li>
-            <li class="noshow">
-              <a href="#" class="text-black hover:underline">My Bids</a>
-            </li>
           </ul>
         </nav>
         <div class="absolute top-0 right-0 mt-1 mr-3 md:relative">
@@ -83,11 +75,12 @@
     </div>
     <button
       class="bg-customBlue font-poppins w-60 mt-10 rounded-lg py-2 px-2 md:py-2 md:px-4 shadow-md flex justify-center items-baseline hover:underline text-xl"
+      id="createnewlistingbutton"
     >
       <a href="list-item.html">Create New Listing</a>
     </button>
     <div class="flex justify-between w-full">
-      <div class="flex flex-row justify-start my-1 w-1/2">
+<!--       <div class="flex flex-row justify-start my-1 w-1/2">
         <!-- <div
           class="bg-white w-30 mt-5 ml-5 rounded p-3 mr-5 flex justify-center items-baseline shadow-lg text-sm"
         >
@@ -108,30 +101,10 @@
         >
           End date
         </button> -->
-      </div>
-      <div
-        class="w-full md:w-1/2 flex md:justify-end justify-center items-center mb-7"
-      >
-        <input class="border rounded px-2 py-1 mt-5" id="searchInput" />
-        <button
-          class="bg-green-200 w-30 rounded px-2 mt-4 mr-3 ml-3 flex justify-center items-center shadow-lg hover:underline text-sm"
-          id="searchButton"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-6 h-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-            />
-          </svg>
-        </button>
+      </div> 
+      <div class="flex justify-center items-center mb-7">
+        <input class="border rounded px-2 py-1 mt-5" id="searchInput" placeholder="Search" />
+       
       </div>
     </div>
     <div

@@ -5,14 +5,16 @@ export function registerUser() {
   const emailInput = document.getElementById("emailInput");
   const passwordInput = document.getElementById("passwordInput");
   const avatarInput = document.getElementById("avatarInput");
-  const errorFromApi = document.querySelector("#apiError");
+  const errorFromApi = document.querySelector("#error");
 
   const userData = {
-    name: nameInput.value,
+    name: nameInput.value.trim().replace(/\s+/g, "_"),
     email: emailInput.value,
     password: passwordInput.value,
     avatar: avatarInput.value,
   };
+
+  console.log(userData.name);
 
   fetch("https://api.noroff.dev/api/v1/auction/auth/register", {
     method: "POST",

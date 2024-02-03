@@ -24,7 +24,7 @@
       </div>
       <div class="flex justify-between items-center mt-4 md:mt-6 lg:mt-8">
         <nav class="md:flex items-center md:flex-row flex-col">
-          <ul
+          <ulerrorFromApi
             class="flex flex-row text-base md:text-lg lg:text-xl gap-4 md:gap-6 lg:gap-8"
           >
             <li>
@@ -39,14 +39,6 @@
               <a href="" class="text-black line-through hover:cursor-default"
                 >Profile</a
               >
-            </li>
-            <li>
-              <a href="" class="text-black line-through hover:cursor-default"
-                >My Listings</a
-              >
-            </li>
-            <li>
-              <a href="" class="text-black line-through hover:cursor-default">My Bids</a>
             </li>
           </ul>
         </nav>
@@ -76,9 +68,9 @@
           <div id="passwordError" class="text-red-600 hidden">invalid password</div>
           <label>avatar</label
           ><input type="text" class="border border-black rounded w-full" id="avatarInput" />
-          <div class="text-red-600 max-w-xs hidden" id="apiError">Username or email is most likely taken, please try again</div>
+          <div class="text-red-600 max-w-xs hidden" id="errorfromapi">Username or email is most likely taken, please try again</div>
           <div class="mt-5 flex flex-row justify-between w-full">
-            <button class="bg-customBlue rounded p-1 w-32 shadow-lg flex-col md:flex-row inline-block" id="registerButton">
+            <button class="bg-customBlue rounded p-1 w-32 shadow-lg flex-col md:flex-row" id="registerButton">
               Register
             </button>
             <button class="bg-customBlue rounded p-1 w-32 shadow-lg flex-col md:flex-row" id="loginLink">

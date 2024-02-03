@@ -1,4 +1,14 @@
 const loginError = document.querySelector("#loginError");
+const backToRegisterButton = document.querySelector("#backToRegisterButton");
+
+const clearLocalStorage = () => {
+  localStorage.clear();
+  window.location.href = "index.html";
+};
+
+if (backToRegisterButton) {
+  backToRegisterButton.addEventListener("click", clearLocalStorage);
+}
 
 export function loginUser(email, password) {
   fetch("https://api.noroff.dev/api/v1/auction/auth/login", {
