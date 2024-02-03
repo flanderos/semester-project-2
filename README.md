@@ -7,7 +7,7 @@ This is a live and fully functional auction house platform where user can regist
 - cd https://github.com/flanderos/semester-project-2
 - npm install
 - npm start
-- Run live server
+- Or Run live server
 - Register user, If there is userdata stored in localstorage, you will be redirected to loginpage
 - Log in
 
