@@ -46,9 +46,7 @@ export function validateForm(event) {
     if (isFormValid) {
       registerUser();
     } else {
-      console.log(
-        "Validering mislyktes. Vennligst fyll ut alle feltene riktig.",
-      );
+      errorFromApi.classList.remove("hidden");
     }
   }
 }

@@ -52,7 +52,7 @@
         </nav>
       </div>
     </div>
-    <h2 class="text-2xl mt-16">"Have you ever seen a sloagan this big?"</h2>
+    <h2 class="text-2xl mt-16">"The amazing Auction House"</h2>
     <div class="max-w-[90%] mt-8">
     <p class="">
       Welcome to my Auction House. Built with HTML, Tailwind CSS, and JavaScript for a straightforward and effective bidding experience. If you're new here, please take a moment to register. After registering, you can log in to place bids on various items. As a welcome bonus, you'll receive 1,000 coins to start your bidding. Dive in and start exploring the exciting items up for auction! If you just want to take a look, visit the <a class="underline text-blue-700"href="auction.html">auction house</a></p>
@@ -76,9 +76,9 @@
           <div id="passwordError" class="text-red-600 hidden">invalid password</div>
           <label>avatar</label
           ><input type="text" class="border border-black rounded w-full" id="avatarInput" />
-          <div class="text-red-600 max-w-xs hidden">Username or email is most likely taken, please try again</div>
+          <div class="text-red-600 max-w-xs hidden" id="apiError">Username or email is most likely taken, please try again</div>
           <div class="mt-5 flex flex-row justify-between w-full">
-            <button class="bg-customBlue rounded p-1 w-32 shadow-lg flex-col md:flex-row" id="registerButton">
+            <button class="bg-customBlue rounded p-1 w-32 shadow-lg flex-col md:flex-row inline-block" id="registerButton">
               Register
             </button>
             <button class="bg-customBlue rounded p-1 w-32 shadow-lg flex-col md:flex-row" id="loginLink">
