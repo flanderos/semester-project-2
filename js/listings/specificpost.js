@@ -44,8 +44,8 @@ export function getSpecificPost() {
       // Find the last bid
       const lastBid = bids[bids.length - 1];
 
-      thePost.innerHTML = `<div class="h-2/3 w-[80vw] mt-8 flex justify-center items-center mb-12" data-id=${postId} id="thepost">
-                <div class="w-[70%] h-[70%] border border-black rounded p-5 bg-white shadow-lg flex flex-col justify-between max-w-[calc(100%/2)]">
+      thePost.innerHTML = `<div class="h-2/3 w-11/12 sm:w-[500px] mt-8 flex justify-center items-center mb-12 mx-auto"" data-id=${postId} id="thepost">
+                <div class="w-full h-[70%] border border-black rounded p-5 bg-white shadow-lg flex flex-col justify-between">
                     <div class="flex flex-col justify-between mb-5">
                         <p class="text-lg" id="timeCreated">Created: ${created}</p>
                         <p class="text-lg font-bold" id="title">${title}</p>
