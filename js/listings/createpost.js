@@ -1,7 +1,7 @@
 import { validateForm } from "./validatepost.js";
 
 export async function postItem() {
-  // Hent token fra localStorage eller en annen kilde
+  // get token from localstorage
   const token = localStorage.getItem("token");
 
   const endDate = document.querySelector("#enddate");

@@ -147,7 +147,7 @@ export const profileListings = async () => {
 
     const data = await response.json();
 
-    return data; // Returner dataene fra serveren
+    return data; // Return data from the api
   } catch (error) {
     console.error("An error occurred:", error);
     throw error;
