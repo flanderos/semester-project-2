@@ -10,7 +10,7 @@ export function validateLoginForm(event) {
     const passwordInput = document.querySelector("#passwordInput");
     const passwordError = document.querySelector("#passwordError");
 
-    // Valider e-postformat
+    // validate email
     if (!validateEmail(emailInput.value)) {
       emailError.classList.remove("hidden");
       isFormValid = false;
@@ -18,7 +18,7 @@ export function validateLoginForm(event) {
       emailError.classList.add("hidden");
     }
 
-    // Valider passordlengde
+    // validate password
     if (passwordInput.value.trim().length <= 6) {
       passwordError.classList.remove("hidden");
       isFormValid = false;
@@ -26,7 +26,7 @@ export function validateLoginForm(event) {
       passwordError.classList.add("hidden");
     }
 
-    // Kjør loginUser hvis valideringen er vellykket
+    // run login if form is valid
     if (isFormValid) {
       loginUser(emailInput.value, passwordInput.value);
     } else {

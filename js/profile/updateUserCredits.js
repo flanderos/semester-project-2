@@ -20,12 +20,12 @@ export async function updateUserCreditsFromAPI() {
 
     if (response.ok) {
       const profile = await response.json();
-      const userCredits = profile.credits; // Hent kreditinformasjonen fra profilen
+      const userCredits = profile.credits; // Get usercredit
 
-      // Oppdater userCredits i localStorage
+      // update usergredit in local storage
       localStorage.setItem("userCredits", userCredits);
 
-      // Utfør den ønskede handlingen, for eksempel å refreshe siden
+      // refresh page so usercredit is updated
       window.location.reload();
     } else {
       console.error(`HTTP error! status: ${response.status}`);
