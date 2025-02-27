@@ -1,7 +1,7 @@
 export async function updateUserCreditsFromAPI() {
   try {
     const token = localStorage.getItem("token");
-    const username = localStorage.getItem("name"); // Hent brukernavnet fra localStorage
+    const username = localStorage.getItem("name");
 
     if (!token || !username) {
       console.error("Token or username not found in localStorage.");
@@ -20,13 +20,14 @@ export async function updateUserCreditsFromAPI() {
 
     if (response.ok) {
       const profile = await response.json();
-      const userCredits = profile.credits; // Get usercredit
+      const userCredits = profile.credits;
 
-      // update usergredit in local storage
-      localStorage.setItem("userCredits", userCredits);
+      const oldCredits = localStorage.getItem("userCredits");
 
-      // refresh page so usercredit is updated
-      window.location.reload();
+      if (oldCredits !== userCredits.toString()) {
+        localStorage.setItem("userCredits", userCredits);
+        document.querySelector("#usercredits").textContent = `Credit: ${userCredits}`;
+      }
     } else {
       console.error(`HTTP error! status: ${response.status}`);
     }
@@ -34,3 +35,5 @@ export async function updateUserCreditsFromAPI() {
     console.error("Error updating userCredits:", error);
   }
 }
+
+setInterval(updateUserCreditsFromAPI, 1000);
