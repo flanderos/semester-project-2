@@ -1,34 +1,49 @@
-import { activeResults } from "./card.js";
-import { listings } from "./card.js";
-import { addClickListeners } from "./card.js";
-import { renderPost } from "./card.js";
+import { activeResults, listings, renderPost, addClickListeners } from "./card.js";
 
-const searchButton = document.querySelector("#searchButton");
+const searchInput = document.querySelector("#searchInput");
 
+// ✅ Debounce-funksjon for å optimalisere søk
+function debounce(func, delay = 300) {
+    let timer;
+    return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => func(...args), delay);
+    };
+}
+
+// ✅ Hovedfunksjon for å søke i titler
 export const searchPostsByTitle = () => {
-    const searchInput = document.querySelector("#searchInput");
-    const searchTerm = searchInput.value.toLowerCase();
+    const searchTerm = searchInput.value.trim().toLowerCase();
+    if (!searchTerm) {
+        // Hvis søkefeltet er tomt, vis alle resultater igjen
+        renderAllPosts();
+        return;
+    }
 
     const filteredResults = activeResults.filter(result =>
-        result.title && result.title.toLowerCase().includes(searchTerm)
+        result.title?.toLowerCase().includes(searchTerm)
     );
 
-    console.log(searchTerm);
+    listings.innerHTML = ''; // Tøm eksisterende kort
 
-    listings.innerHTML = ''; 
-    filteredResults.forEach(result => {
-        renderPost(result);
+    // ✅ Bruk requestAnimationFrame for smidig rendering
+    requestAnimationFrame(() => {
+        filteredResults.forEach(renderPost);
+        addClickListeners();
     });
-
-    addClickListeners(); 
 };
 
-searchInput.addEventListener("input", () => {
-    console.log("Input event triggered");
-    searchPostsByTitle();
-});
+// ✅ Funksjon for å vise alle poster (brukes når søket er tomt)
+const renderAllPosts = () => {
+    listings.innerHTML = '';
+    requestAnimationFrame(() => {
+        activeResults.forEach(renderPost);
+        addClickListeners();
+    });
+};
 
+// ✅ Bruk debounce for å forhindre spam-kjøring av søk
+const debouncedSearch = debounce(searchPostsByTitle, 300);
 
-
-
-
+// ✅ Event listener for søkefeltet (bruker debounce)
+searchInput.addEventListener("input", debouncedSearch);

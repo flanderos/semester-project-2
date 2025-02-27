@@ -23,10 +23,17 @@ export function formatTimeLeft(timeLeft) {
 }
 
 export function addClickListeners() {
+  const allPostElements = document.querySelectorAll("[id^='post-']");
+  
   activeResults.forEach((result) => {
     const postElement = document.getElementById(`post-${result.id}`);
     if (postElement) {
-      postElement.addEventListener("click", () => {
+      const newElement = postElement.cloneNode(true);
+      if (postElement.parentNode) {
+        postElement.parentNode.replaceChild(newElement, postElement);
+      }
+      
+      newElement.addEventListener("click", function() {
         window.location.href = `specificpost.html?id=${result.id}`;
       });
     }
@@ -104,23 +111,33 @@ export const renderListings = async () => {
       return endDateA - endDateB;
     });
 
-    if (isFirstLoad) {
-      listings.innerHTML = '';
-      isFirstLoad = false;
-    } else {
-      listings.innerHTML = '';
+    const searchInput = document.getElementById('searchInput');
+    const searchTerm = searchInput ? searchInput.value.trim() : '';
+    
+    let resultsToShow = activeResults;
+    
+    if (searchTerm !== '') {
+      resultsToShow = activeResults.filter(item => 
+        item.title && item.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
     }
-
-    activeResults.forEach((result) => {
+    
+    listings.innerHTML = '';
+    
+    resultsToShow.forEach((result) => {
       const cardHTML = renderPost(result);
       listings.insertAdjacentHTML("beforeend", cardHTML);
     });
     
+    forceGrid();
+    
+    setTimeout(() => {
+      addClickListeners();
+    }, 100);
+    
     if (loader) {
       loader.classList.add("hidden");
     }
-    
-    addClickListeners();
     
   } catch (error) {
     if (loader) {
@@ -128,6 +145,31 @@ export const renderListings = async () => {
     }
   }
 };
+
+export function performSearch(searchTerm) {
+  if (!listings) {
+    return;
+  }
+  
+  const resultsToShow = searchTerm.trim() === '' 
+    ? activeResults 
+    : activeResults.filter(item => 
+        item.title && item.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+  
+  listings.innerHTML = '';
+  
+  resultsToShow.forEach(result => {
+    const cardHTML = renderPost(result);
+    listings.insertAdjacentHTML("beforeend", cardHTML);
+  });
+  
+  forceGrid();
+  
+  setTimeout(() => {
+    addClickListeners();
+  }, 100);
+}
 
 const showMoreButton = document.querySelector("#showmorebutton");
 
@@ -140,19 +182,45 @@ if (showMoreButton) {
   showMoreButton.addEventListener("click", showMorePosts);
 }
 
+function setupSearch() {
+  const searchInput = document.getElementById('searchInput');
+  
+  if (searchInput) {
+    let searchTimeout;
+    
+    searchInput.addEventListener('input', () => {
+      const searchTerm = searchInput.value;
+      
+      clearTimeout(searchTimeout);
+      
+      searchTimeout = setTimeout(() => {
+        performSearch(searchTerm);
+      }, 300);
+    });
+  }
+}
+
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', renderListings);
+  document.addEventListener('DOMContentLoaded', () => {
+    setupSearch();
+    renderListings();
+  });
 } else {
+  setupSearch();
   renderListings();
 }
 
 function updateTimers() {
-  activeResults.forEach((result) => {
-    const timeLeft = getTimeLeft(result.endsAt);
-    const timeLeftString = formatTimeLeft(timeLeft);
-    const timerElement = document.getElementById(`time-left-${result.id}`);
-    if (timerElement) {
-      timerElement.textContent = timeLeftString;
+  const timerElements = document.querySelectorAll("[id^='time-left-']");
+  
+  timerElements.forEach(element => {
+    const postId = element.id.replace("time-left-", "");
+    const result = activeResults.find(r => r.id === postId);
+    
+    if (result) {
+      const timeLeft = getTimeLeft(result.endsAt);
+      const timeLeftString = formatTimeLeft(timeLeft);
+      element.textContent = timeLeftString;
     }
   });
 }
