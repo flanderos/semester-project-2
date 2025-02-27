@@ -159,10 +159,22 @@ export function performSearch(searchTerm) {
   
   listings.innerHTML = '';
   
-  resultsToShow.forEach(result => {
-    const cardHTML = renderPost(result);
-    listings.insertAdjacentHTML("beforeend", cardHTML);
-  });
+  
+  if (resultsToShow.length === 0 && searchTerm.trim() !== '') {
+    
+    listings.innerHTML = `
+      <div class="col-span-full text-center py-10">
+        <p class="text-xl font-bold">0 results</p>
+        <p class="text-gray-500">zero results for"${searchTerm}"</p>
+      </div>
+    `;
+  } else {
+    
+    resultsToShow.forEach(result => {
+      const cardHTML = renderPost(result);
+      listings.insertAdjacentHTML("beforeend", cardHTML);
+    });
+  }
   
   forceGrid();
   
