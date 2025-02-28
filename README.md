@@ -1,14 +1,10 @@
 # Auction House - Semester-Project-2 
 
-![image](https://user-images.githubusercontent.com/52622303/164316813-4b12d99f-aeb7-4069-85cf-e72b3a50ac99.png)
+[![image](https://user-images.githubusercontent.com/52622303/164316813-4b12d99f-aeb7-4069-85cf-e72b3a50ac99.png)](https://rad-marigold-0dd341.netlify.app/)
 
-A simple overview of the use/purpose of the project.
+This is my Semester project and is a functional auction house app
 
 ## Description
-
-Add a more detailed description of what your project entails and set out to do.
-
-You can add some bullet points if you'd like to:
 
 - User can register
 - User can Log in
