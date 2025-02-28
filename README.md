@@ -1,9 +1,12 @@
 # Auction House - Semester-Project-2 
 
-(![image](https://github.com/user-attachments/assets/6f608c80-d9ac-4e93-be61-e43a1b44c3ff)
-)](https://rad-marigold-0dd341.netlify.app/)
+![image](https://github.com/user-attachments/assets/6f608c80-d9ac-4e93-be61-e43a1b44c3ff)
+
+
 
 This is my Semester project and is a functional auction house app
+
+Live Version: https://rad-marigold-0dd341.netlify.app/
 
 ## Description
 
