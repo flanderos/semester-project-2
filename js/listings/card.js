@@ -23,10 +23,17 @@ export function formatTimeLeft(timeLeft) {
 }
 
 export function addClickListeners() {
+  const allPostElements = document.querySelectorAll("[id^='post-']");
+  
   activeResults.forEach((result) => {
     const postElement = document.getElementById(`post-${result.id}`);
     if (postElement) {
-      postElement.addEventListener("click", () => {
+      const newElement = postElement.cloneNode(true);
+      if (postElement.parentNode) {
+        postElement.parentNode.replaceChild(newElement, postElement);
+      }
+      
+      newElement.addEventListener("click", function() {
         window.location.href = `specificpost.html?id=${result.id}`;
       });
     }
@@ -35,67 +42,146 @@ export function addClickListeners() {
 
 export const renderPost = (result) => {
   const { title, created, tags, media, endsAt, id } = result;
-  const mediaUrl = media[0] ? media[0] : "../../assets/placeholder.png";
-  const timeLeft = getTimeLeft(endsAt);
-  const timeLeftString = formatTimeLeft(timeLeft);
+  const mediaUrl = media && media.length > 0 ? media[0] : "../../assets/placeholder.png";
+  const timeLeftString = formatTimeLeft(getTimeLeft(endsAt));
 
-  const postElement = document.createElement("div");
-  postElement.className = "flex justify-center align-center ml-1 mr-1 mb-1";
-  postElement.id = `post-${id}`;
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-GB", { 
+        year: "numeric", 
+        month: "long", 
+        day: "numeric", 
+        hour: "2-digit", 
+        minute: "2-digit"
+    });
+  }
+  
+  const formattedCreated = formatDate(created);
 
-  postElement.innerHTML = `
-  <div class="min-h-96 border border-black rounded p-5 bg-white shadow-lg hover:cursor-pointer" id="post-${id}">
-  <div class="mb-5">
-      <p class="text-lg" id="timeCreated">Created: ${created}</p>
-      <p class="font-bold" id="title">${title}</p>
-  </div>
-  <div class="flex items-center justify-center mb-2"> <!-- Center vertically and horizontally -->
-      <img class="w-60 h-60 object-cover" src="${mediaUrl}" onerror="this.onerror=null; this.src='./assets/placeholder.png';" alt="placeholder image" />
-  </div>
-  <div class="mt-2">
-      <div class="text-s h-12" id="tags">${tags || ""}</div>
-      <p>Time Left: <span id="time-left-${id}">${timeLeftString}</span></p>
-  </div>
-  <div class="mt-2">
-      <button class="w-full bg-customBlue rounded shadow-lg hover:underline">More Info</button>
-  </div>
-</div>
+  const postHTML = `
+    <div id="post-${id}" class="border border-black rounded p-5 bg-white shadow-lg hover:cursor-pointer flex flex-col h-full">
+      <div class="mb-5">
+        <p class="text-lg">Created: ${formattedCreated}</p>
+        <p class="font-bold">${title}</p>
+      </div>
+      <div class="flex items-center justify-center mb-2"> 
+        <img class="w-full h-60 object-cover" src="${mediaUrl}" onerror="this.onerror=null; this.src='./assets/placeholder.png';" alt="${title}">
+      </div>
+      <div class="mt-2">
+        <div class="text-s h-12 overflow-hidden">${tags || ""}</div>
+        <p>Time Left: <span id="time-left-${id}">${timeLeftString}</span></p>
+      </div>
+      <div class="mt-auto">
+        <button class="w-full bg-customBlue text-white rounded shadow-lg hover:underline p-2">More Info</button>
+      </div>
+    </div>
   `;
-  postElement.setAttribute("data-ends-at", endsAt);
-  listings.appendChild(postElement);
+
+  return postHTML;
 };
 
 export const renderListings = async () => {
   const loader = document.querySelector("#loader");
-  if (!loader) {
-    return; // Loader element not found, exit the function
+  if (loader) {
+    loader.classList.remove("hidden");
   }
-  loader.classList.remove("hidden");
 
   const limit = 40;
   const url = `https://api.noroff.dev/api/v1/auction/listings?sort=endsAt&sortOrder=asc&limit=${limit}&offset=${offset}&_active=true`;
-  const response = await fetch(url);
-  const newResults = await response.json();
+  
+  try {
+    const response = await fetch(url);
+    const newResults = await response.json();
 
-  if (!listings) {
-    return; // Listings element not found, exit the function
+    if (!listings) {
+      if (loader) {
+        loader.classList.add("hidden");
+      }
+      return;
+    }
+
+    const existingIds = new Set(activeResults.map(item => item.id));
+    const uniqueNewResults = newResults.filter(item => !existingIds.has(item.id));
+    
+    activeResults = [...activeResults, ...uniqueNewResults];
+
+    activeResults.sort((a, b) => {
+      const endDateA = new Date(a.endsAt);
+      const endDateB = new Date(b.endsAt);
+      return endDateA - endDateB;
+    });
+
+    const searchInput = document.getElementById('searchInput');
+    const searchTerm = searchInput ? searchInput.value.trim() : '';
+    
+    let resultsToShow = activeResults;
+    
+    if (searchTerm !== '') {
+      resultsToShow = activeResults.filter(item => 
+        item.title && item.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+    
+    listings.innerHTML = '';
+    
+    resultsToShow.forEach((result) => {
+      const cardHTML = renderPost(result);
+      listings.insertAdjacentHTML("beforeend", cardHTML);
+    });
+    
+    forceGrid();
+    
+    setTimeout(() => {
+      addClickListeners();
+    }, 100);
+    
+    if (loader) {
+      loader.classList.add("hidden");
+    }
+    
+  } catch (error) {
+    if (loader) {
+      loader.classList.add("hidden");
+    }
   }
-
-  if (isFirstLoad) {
-    listings.innerHTML = "";
-    isFirstLoad = false;
-  }
-
-  activeResults = [...activeResults, ...newResults];
-
-  newResults.forEach((result) => {
-    renderPost(result);
-  });
-
-  loader.classList.add("hidden");
-
-  addClickListeners();
 };
+
+export function performSearch(searchTerm) {
+  if (!listings) {
+    return;
+  }
+  
+  const resultsToShow = searchTerm.trim() === '' 
+    ? activeResults 
+    : activeResults.filter(item => 
+        item.title && item.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+  
+  listings.innerHTML = '';
+  
+  
+  if (resultsToShow.length === 0 && searchTerm.trim() !== '') {
+    
+    listings.innerHTML = `
+      <div class="col-span-full text-center py-10">
+        <p class="text-xl font-bold">0 results</p>
+        <p class="text-gray-500">zero results for"${searchTerm}"</p>
+      </div>
+    `;
+  } else {
+    
+    resultsToShow.forEach(result => {
+      const cardHTML = renderPost(result);
+      listings.insertAdjacentHTML("beforeend", cardHTML);
+    });
+  }
+  
+  forceGrid();
+  
+  setTimeout(() => {
+    addClickListeners();
+  }, 100);
+}
 
 const showMoreButton = document.querySelector("#showmorebutton");
 
@@ -108,25 +194,58 @@ if (showMoreButton) {
   showMoreButton.addEventListener("click", showMorePosts);
 }
 
-renderListings();
+function setupSearch() {
+  const searchInput = document.getElementById('searchInput');
+  
+  if (searchInput) {
+    let searchTimeout;
+    
+    searchInput.addEventListener('input', () => {
+      const searchTerm = searchInput.value;
+      
+      clearTimeout(searchTimeout);
+      
+      searchTimeout = setTimeout(() => {
+        performSearch(searchTerm);
+      }, 300);
+    });
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    setupSearch();
+    renderListings();
+  });
+} else {
+  setupSearch();
+  renderListings();
+}
 
 function updateTimers() {
-  activeResults.forEach((result) => {
-    const timeLeft = getTimeLeft(result.endsAt);
-    const timeLeftString = formatTimeLeft(timeLeft);
-    const timerElement = document.getElementById(`time-left-${result.id}`);
-    if (timerElement) {
-      timerElement.textContent = timeLeftString;
+  const timerElements = document.querySelectorAll("[id^='time-left-']");
+  
+  timerElements.forEach(element => {
+    const postId = element.id.replace("time-left-", "");
+    const result = activeResults.find(r => r.id === postId);
+    
+    if (result) {
+      const timeLeft = getTimeLeft(result.endsAt);
+      const timeLeftString = formatTimeLeft(timeLeft);
+      element.textContent = timeLeftString;
     }
   });
 }
 
 setInterval(updateTimers, 1000);
 
-//Sort post based on enddate
+function forceGrid() {
+  const gridContainer = document.querySelector("#allthelistings");
+  if (gridContainer) {
+    gridContainer.style.display = "grid";
+    gridContainer.style.gridTemplateColumns = "repeat(auto-fill, minmax(250px, 1fr))";
+    gridContainer.style.gap = "1.5rem";
+  }
+}
 
-activeResults.sort((a, b) => {
-  const endDateA = new Date(a.endsAt);
-  const endDateB = new Date(b.endsAt);
-  return endDateA - endDateB;
-});
+forceGrid();

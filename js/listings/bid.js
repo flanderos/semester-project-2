@@ -80,11 +80,11 @@ export const placeBid = () => {
         // Wait for 3 seconds before refreshing the page
         setTimeout(() => {
           window.location.reload(); // Refresh the page
-        }, 3000);
+        }, 500);
 
         setTimeout(() => {
           updateUserCreditsFromAPI();
-        }, 20000);
+        }, 500);
       })
       .catch((error) => {
         console.error("Error placing bid:", error);
